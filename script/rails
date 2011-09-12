@@ -1,0 +1,34 @@
+#!/usr/bin/env ruby
+# This command will automatically be run when you run "rails" with Rails 3 gems installed from the root of your application.
+
+APP_PATH = File.expand_path('../../config/application',  __FILE__)
+require File.expand_path('../../config/boot',  __FILE__)
+
+# override Rack::Handler#default to load thin:
+# http://www.skorks.com/2011/08/when-developers-go-to-great-length-to-save-typing-4-letters/
+require 'rack/handler'
+Rack::Handler.class_eval do
+  def self.default(options = {})
+    # Guess.
+    if ENV.include?("PHP_FCGI_CHILDREN")
+      # We already speak FastCGI
+      options.delete :File
+      options.delete :Port
+ 
+      Rack::Handler::FastCGI
+    elsif ENV.include?("REQUEST_METHOD")
+      Rack::Handler::CGI
+    else
+      begin
+        Rack::Handler::Mongrel
+      rescue LoadError
+        begin
+          Rack::Handler::Thin
+        rescue LoadError
+          Rack::Handler::WEBrick
+        end
+      end
+    end
+  end
+end
+require 'rails/commands'

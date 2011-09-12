@@ -1,0 +1,17 @@
+defaults: &defaults
+  adapter:  mysql
+  database: rankey_development
+  username: root
+  password: 
+  host:     localhost
+
+development:
+  <<: *defaults
+
+test:
+  database: rankey_test
+  <<: *defaults
+production:
+  database: rankey_production
+  password: PASSWORD
+  <<: *defaults
