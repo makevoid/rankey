@@ -1,0 +1,63 @@
+@import "mixins"
+@import "clearfix"
+  
+// style
+
+$bg: #DDD
+$bg_alt: #AAA
+$bg_cont: #FFF
+$txt: #222
+$main: #999
+$alt: #666
+$links: #444
+
+@font-face
+  font-family: Guardian
+  src: url( /fonts/guardian.eot ) /* IE 6,7,8 */  
+  
+@font-face
+  font-family: Guardian
+  src: url('/fonts/guardian.otf')
+  
+
+html, body
+  height: 100%  
+
+body
+  background: $bg
+  font-family: sans-serif, Helvetica, Arial, Verdana
+  color: $txt
+  font-size: 120%
+  height: 100%
+
+a
+  color: $links
+a:hover
+  color: $links + #111
+
+input
+  padding: 4px 6px
+  width: 300px
+  font-size: 1.15em
+  margin: 6px 0 12px
+  display: block
+input[type='submit'], input.submit
+  width: auto
+
+
+input[type='submit'], input.submit, a.button, nav a
+  +button
+  +color($main)
+  +rounded(15px)
+  font-size: 1.15em
+input[type='submit']:hover, input.submit:hover, a.button:hover, nav a:hover
+  color: $bg
+
+
+h1
+  padding: 10px
+    
+
+@media (max-width:480px)
+      
+@media (orientation: portrait) 

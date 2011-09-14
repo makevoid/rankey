@@ -1,7 +1,12 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
+DataMapper.auto_migrate!
+
+user = User.create! name: "makevoid", email: "makevoid@gmail.com"
+
+site = Site.create! name: "makevoid.com"
+
+key = site.keys.create! name: "makevoid"
+key = site.keys.create! name: "ruby on rails firenze"
+
+key.positions.create! pos: 1, engine: Google
+key.positions.create! pos: 2, engine: Yahoo
+key.positions.create! pos: 5, engine: Bing

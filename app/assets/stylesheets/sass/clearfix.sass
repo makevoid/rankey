@@ -1,0 +1,86 @@
+
+@mixin button
+  display: inline-block
+  padding: .1em 1em .12em
+  outline: none
+  cursor: pointer
+  text-align: center
+  text-decoration: none
+  font-size: 1.3em
+  @include rounded('.5em')
+  // this determines Mozilla to show the padding
+  border: solid 1px #ccc
+  @include shadow
+  text-shadow: 0 1px 1px rgba(0,0,0,.3)
+  &:hover
+    text-decoration: none
+  &:active
+    position: relative
+    top: 1px
+
+@mixin button_rdy
+  +button
+  +simple_gradient(#FFF6C7, #81CCBB)
+  font-size: 0.85em
+  padding: 5px 12px
+  margin: 5px 0
+  +rounded(10px)
+  &:hover
+    +simple_gradient(#CA6931, #FFF6C7)
+
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video 
+  margin: 0
+  padding: 0
+  border: 0
+  font-size: 100%
+  font: inherit
+  vertical-align: baseline
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section 
+  display: block
+
+body 
+  line-height: 1
+
+
+// clearfix
+
+*, html, body
+  margin: 0
+  padding: 0
+
+//html, body 
+//  height: 100%     
+//  max-height: 100%
+  
+img
+  border: 0
+
+ul 
+  list-style-type: none
+
+li
+  display: inline
+
+.clear
+  clear: both
+
+a 
+  text-decoration: none
+  
+  

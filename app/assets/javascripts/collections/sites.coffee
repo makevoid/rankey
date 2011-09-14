@@ -1,0 +1,1 @@
+class Sites extends Backbone.Collection

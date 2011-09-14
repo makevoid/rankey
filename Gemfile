@@ -30,6 +30,8 @@ gem 'tzinfo'
 gem "haml"
 gem "sass"
 
+# gem "resque"
+
 gem 'newrelic_rpm'
 gem "voidtools", git: "git://github.com/makevoid/voidtools"
 gem "exception_notification", :git => "git://github.com/rails/exception_notification"
@@ -46,6 +48,8 @@ end
 group :test do
   gem "factory_girl_rails"
   gem "capybara"
+  gem "fakeweb"
+  gem "vcr"
 end
 
 # Gems used only for assets and not required
