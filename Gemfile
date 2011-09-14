@@ -30,7 +30,14 @@ gem 'tzinfo'
 gem "haml"
 gem "sass"
 
-# gem "resque"
+gem "tilt"
+gem 'coffee-script'
+
+
+gem "mechanize"
+gem "resque"
+
+gem "sorcery"
 
 gem 'newrelic_rpm'
 gem "voidtools", git: "git://github.com/makevoid/voidtools"
@@ -38,6 +45,11 @@ gem "exception_notification", :git => "git://github.com/rails/exception_notifica
 
 gem 'jquery-rails'
 gem 'capistrano'
+
+
+group :development do
+  gem "pry"
+end
 
 group :development, :test do
   gem "rspec-rails", "~> 2.6"

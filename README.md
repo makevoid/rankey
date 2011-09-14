@@ -8,6 +8,12 @@
 
 
 ---
+
+sibil87
+
+muvapp
+
+---
 liquid diamond - freeleancer
 
 giorgio soffiato marketing arena
@@ -15,6 +21,21 @@ giorgio soffiato marketing arena
 ---
 google insight (for search)
 
+add marco.massara on skype
+
+
+---
+brunobellissimo
+
+# tassa.li
+# qurami.com
+
+---
+
+pitch mopup >
+musicxmatch
+
+---
 
 ### Features:
 
