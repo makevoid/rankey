@@ -1,24 +1,29 @@
 class SitesView extends Backbone.View
 
-  initialize: ->
+  el: ".sites"
+
+  constructor: ->
+    _.bindAll(this, 'render')
     Sites.bind("all",   this.render, this)
     Sites.bind("add",   this.addOne, this)
     Sites.bind("reset", this.addAll, this)
   
   render: ->
-    haml = Haml $("#sitesView").html()
-    content = haml({})
-    $(this.el).html content
-
+    content = Utils.haml "#sitesView", {}
+    $(@el).html content 
+    
+    Sites.each (site) =>
+      this.addOne(site)
+    
     this
   
-  addOne: ->
-    view = new SiteView()
+  addOne: (site) ->
+    view = new SiteView model: site
     content = view.render().el
-    this.$(".sites").append content
-
+    Loading.loaded()
+    this.$(".sitesList").append content
     
-  addAll: ->
+  addAll: ->  
     Sites.each this.addOne
     
   

@@ -11,6 +11,7 @@
 //= require ./vendor/haml
 //= require ./vendor/jquery
 //= require models
+//= require utils
 //= require_tree ./collections
 //= require_tree ./views
 //= require rankey

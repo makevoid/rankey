@@ -1,0 +1,30 @@
+%script{ type: "text/template", id: "rankeyView" }
+  :plain
+    %div
+      .loading
+      .sites
+
+%script{ type: "text/template", id: "keysView" }<
+  :plain
+    %div
+
+%script{ type: "text/template", id: "keyView" }<
+  :plain
+    %div
+
+%script{ type: "text/template", id: "siteView" }<
+  :plain
+    %td= name
+    %td= name
+    %td= name
+    %td
+
+%script{ type: "text/template", id: "sitesView" }<
+  :plain
+    %table{ cellspacing: 0 }
+      %thead
+        %tr
+          %th name
+          %th positioneds
+          %th totals
+      %tbody.sitesList

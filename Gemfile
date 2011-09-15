@@ -49,6 +49,7 @@ gem 'capistrano'
 
 group :development do
   gem "pry"
+  gem "guard"
 end
 
 group :development, :test do
