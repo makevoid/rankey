@@ -1,0 +1,64 @@
+/* line 1, ../../../app/assets/stylesheets/sass/clearfix.sass */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+/* line 22, ../../../app/assets/stylesheets/sass/clearfix.sass */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+/* line 26, ../../../app/assets/stylesheets/sass/clearfix.sass */
+body {
+  line-height: 1;
+}
+
+/* line 32, ../../../app/assets/stylesheets/sass/clearfix.sass */
+*, html, body {
+  margin: 0;
+  padding: 0;
+}
+
+/* line 40, ../../../app/assets/stylesheets/sass/clearfix.sass */
+img {
+  border: 0;
+}
+
+/* line 43, ../../../app/assets/stylesheets/sass/clearfix.sass */
+ul {
+  list-style-type: none;
+}
+
+/* line 46, ../../../app/assets/stylesheets/sass/clearfix.sass */
+li {
+  display: inline;
+}
+
+/* line 49, ../../../app/assets/stylesheets/sass/clearfix.sass */
+.clear {
+  clear: both;
+}
+
+/* line 52, ../../../app/assets/stylesheets/sass/clearfix.sass */
+a {
+  text-decoration: none;
+}

@@ -2,7 +2,7 @@
   :plain
     %div
       .loading
-      .sites
+      #content
 
 %script{ type: "text/template", id: "keysView" }<
   :plain
@@ -14,10 +14,16 @@
 
 %script{ type: "text/template", id: "siteView" }<
   :plain
-    %td= name
-    %td= name
-    %td= name
-    %td
+    %div
+      %h2= name
+      %p positioneds
+      %p totals 
+  
+%script{ type: "text/template", id: "siteRow" }<
+  :plain
+    %td [sparkline] \#{name}
+    %td num
+    %td num
 
 %script{ type: "text/template", id: "sitesView" }<
   :plain

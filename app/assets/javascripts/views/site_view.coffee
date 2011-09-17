@@ -1,6 +1,17 @@
 class SiteView extends Backbone.View
-  tagName:  "tr"
+
+  el: "#content"
+  
+  initialize: ->
+    console.log "asd"
+    _.bindAll(this, 'render')
+    this.model.bind("change", this.render)
+    Sites.bind("all",   this.render, this)    # 
+        # Sites.bind("add",   this.addOne, this)
+        # Sites.bind("reset", this.addAll, this)
   
   render: ->
-    $(this.el).html Utils.haml("#siteView", this.model) 
-    this
+    console.log "asd222", this.model
+    content = Utils.haml "#siteView", this.model
+    $(@el).html content 
+  

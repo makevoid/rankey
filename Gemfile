@@ -71,6 +71,8 @@ group :assets do
   gem 'sass-rails', "  ~> 3.1.0"
   gem 'coffee-rails', "~> 3.1.0"#, git: "git://github.com/rails/coffee-rails.git"
   gem 'uglifier'
+  # gem "compass"
+  gem 'compass'#, :git => 'git://github.com/chriseppstein/compass.git', :branch => 'rails31'
 end
 
 

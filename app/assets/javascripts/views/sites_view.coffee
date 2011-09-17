@@ -1,6 +1,6 @@
 class SitesView extends Backbone.View
 
-  el: ".sites"
+  el: "#content"
 
   constructor: ->
     _.bindAll(this, 'render')
@@ -18,8 +18,10 @@ class SitesView extends Backbone.View
     this
   
   addOne: (site) ->
-    view = new SiteView model: site
+    view = new SiteRow model: site
     content = view.render().el
+    $(content).addClass "odd" if @odd
+    @odd = !@odd
     Loading.loaded()
     this.$(".sitesList").append content
     

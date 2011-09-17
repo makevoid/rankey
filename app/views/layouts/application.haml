@@ -15,10 +15,14 @@
         %header
           %h1 Rankey
         %nav
+          %ul
+            %li= link_to "Home", js_void, :"data-url" => ""
+            %li= link_to "blank", js_void, :"data-url" => "blank"
         #content
           = yield
       %footer
       
       = render partial: "rankey/backbone_views"
+      
       
       = javascript_include_tag "application"

@@ -1,5 +1,7 @@
 class SessionsController < ApplicationController # Auth
   
+  before_filter :backbone_default_if_html
+  
   layout nil
   
   # TODO: translations 1

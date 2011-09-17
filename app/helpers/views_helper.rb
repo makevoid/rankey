@@ -4,4 +4,8 @@ module ViewsHelper
     path = path.join(" ") unless path.nil?
     request.path == "/" ? "home" : path
   end
+  
+  def js_void
+    "javascript:void(0)"
+  end
 end

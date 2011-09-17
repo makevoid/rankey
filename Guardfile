@@ -14,6 +14,7 @@ guard 'livereload' do
   watch(%r{(app|public|spec)/javascripts/.+\.(coffee)})
   watch(%r{public/stylesheets/.+\.(css)})
   watch(%r{public/stylesheets/sass/.+\.(sass)})
+  watch(%r{app/assets/stylesheets/sass/.+\.(sass)})
 end
 
 

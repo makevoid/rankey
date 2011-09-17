@@ -1,6 +1,96 @@
-@import "mixins"
-@import "clearfix"
-  
+@import mixins
+//@import clearfix
+@import compass/utilities/general/clearfix
+@import compass/reset/utilities
+
+=custom-reset // fork of global-reset
+  html, body, div, span, applet, object, iframe,
+  h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+  a, abbr, acronym, address, big, cite, code,
+  del, dfn, em, img, ins, kbd, q, s, samp,
+  small, strike, strong, sub, sup, tt, var,
+  b, u, i, center,
+  dl, dt, dd, ol, ul, li,
+  fieldset, form, label, legend,
+  table, caption, tbody, tfoot, thead, tr, th, td,
+  article, aside, canvas, details, embed, 
+  figure, figcaption, footer, header, hgroup, 
+  menu, nav, output, ruby, section, summary,
+  time, mark, audio, video
+    +reset-box-model
+    +reset-font
+  body
+    +reset-body
+  ol, ul
+    +reset-list-style
+  table
+    //   +reset-table
+    border-spacing: 0
+  caption, th, td
+    +reset-table-cell
+  q, blockquote
+    +reset-quotation
+  a img
+    +reset-image-anchor-border
+  +reset-html5
+
++custom-reset
+
+@import compass/utilities/tables
+@import compass/utilities/tables/scaffolding
+@import compass/css3/border-radius
+@import compass/typography/links/link-colors
+// @import compass/typography/vertical_rhythm
+@import compass/css3
+
+$default-radius: 12px
+
+
+$table-color: #EBEFF0
+
+
+=table-rounded-borders
+  th:first-child
+    +border-corner-radius(top, left, $default-radius)
+  th:last-child
+    +border-corner-radius(top, right, $default-radius)
+  tr:last-child td:first-child
+    +border-corner-radius(bottom, left, $default-radius)
+  tr:last-child td:last-child
+    +border-corner-radius(bottom, right, $default-radius)
+
+
+table
+  width: 100%
+  +table-scaffolding
+  +border-radius($default-radius)
+  +table-rounded-borders
+  border: 2px solid darken($table-color, 30%)
+    
+  thead tr    
+    background: darken($table-color, 5%)
+    +background-image(linear-gradient(#fff, darken($table-color, 5%), darken($table-color, 15%)))
+    // +background-image(linear-gradient(#fff, #ccc 30%, #bbb 70%, #aaa))
+    th
+      text-align: left
+      font-size: 0.8em
+  tr
+    background: $table-color
+    +background-image(linear-gradient(#fff, darken(adjust-hue($table-color, 0deg), 6%)))
+  tr.odd
+    background: darken(adjust-hue($table-color, 10deg), 3%)
+    +background-image(linear-gradient(#fff, darken(adjust-hue($table-color, 15deg), 15%)))
+    // +background-image(linear-gradient(#fff, darken(adjust-hue($table-color, 10deg), 3%))
+  tbody tr
+    cursor: pointer
+    &:hover
+      background: darken(adjust-hue($table-color, 15deg), 6%)
+      +background-image(linear-gradient(#fff, darken(adjust-hue($table-color, -60deg), 25%)))
+
+.sites
+  display: block
+  // position: fixed
+
 // style
 
 $bg: #DDD
@@ -11,30 +101,27 @@ $main: #999
 $alt: #666
 $links: #444
 
-@font-face
-  font-family: Guardian
-  src: url( /fonts/guardian.eot ) /* IE 6,7,8 */  
+
++font-face("Nova Square", font-files("nova_square.ttf", truetype, "nova_square.otf", opentype))
+
   
-@font-face
-  font-family: Guardian
-  src: url('/fonts/guardian.otf')
-  
+
 
 html, body
   height: 100%  
 
 body
   background: $bg
-  font-family: sans-serif, Helvetica, Arial, Verdana
+  +background-image(linear-gradient(darken(adjust-hue($table-color, 0deg), 6%), #fff))
+  font-family: sans-serif, Helvetica,  Arial, Verdana // Nova Square,
   color: $txt
   font-size: 120%
   height: 100%
 
 a
-  color: $links
-a:hover
-  color: $links + #111
-
+  // link-colors($normal, $hover, $active, $visited, $focus)
+  +link-colors($links, $links + #111)
+  
 input
   padding: 4px 6px
   width: 300px
@@ -47,24 +134,39 @@ input[type='submit'], input.submit
 
 input[type='submit'], input.submit, a.button, nav a
   +button
-  +color($main)
+  +color(darken($table-color, 50%))
   +rounded(15px)
-  font-size: 1.15em
+  font-size: 0.8em
+  padding: 4px 8px
 input[type='submit']:hover, input.submit:hover, a.button:hover, nav a:hover
   color: $bg
-
+  
+h1, h2  
+  font-family: Nova Square
+  font-weight: bold
 
 h1
   padding: 10px
-
+  font-size: 1.7em
+  
+h2
+  padding: 9px 0
+  font-size: 1.5em
+  
+  
 
 #rankey
   padding: 10px
+
+nav
+  margin: 0 0 10px 10px 
   
+#content
+  margin: 0 10px
   
 table 
   th, td
-    padding: 5px
+    padding: 8px
   
 
 @media (max-width:480px)
