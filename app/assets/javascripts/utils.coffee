@@ -21,6 +21,11 @@ Array::first = ->
   
 Array::last = ->
   this[-1]
+  
+  
+String::trim = ->
+  # TODO: add trimming at the end of the line
+  this.replace(/^\s+/, '') 
 
 # inflections
 

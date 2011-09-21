@@ -4,7 +4,7 @@ class RankeyRouter extends Backbone.Router
   routes: {
     '': "home",
     'sites/:site_id': 'site',
-    'blank': 'blank',
+    'not_found': 'blank',
   }
 
   initialize: ->
@@ -17,7 +17,21 @@ class RankeyRouter extends Backbone.Router
     @main_view.site(site_id)
 
   blank: ->
-    $("#content").html("Page not found")
+    content = "
+.page\n
+  %h2 Notice\n
+  .cont\n
+    %p Section not found\n
+    %p\n 
+      Go back to \n 
+      %a.sites_btn{ href: 'javascript:void(0)' } Sites\n
+  .foot\n
+    "
+    haml = Haml content
+    $("#content").html haml({})
+    $(".sites_btn").bind("click", ->
+      Rankey.navigate "", true
+    ) 
 
 $( ->
   g.Rankey = new RankeyRouter()

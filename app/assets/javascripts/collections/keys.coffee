@@ -1,5 +1,4 @@
-class KeysList extends Backbone.Collection
+class KeysBase extends Backbone.Collection
   model: Key
-  url: "/site/:id/keys.json"
-  
-window.Keys = new KeysList()  
+
+

@@ -71,121 +71,9 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   display: block;
 }
 
-/* line 63, ../../../app/assets/stylesheets/sass/rankey.sass */
-table {
-  width: 100%;
-  -moz-border-radius: 12px;
-  -webkit-border-radius: 12px;
-  -o-border-radius: 12px;
-  -ms-border-radius: 12px;
-  -khtml-border-radius: 12px;
-  border-radius: 12px;
-  border: 2px solid #94a9ae;
-}
-/* line 2, ../../../../../.rvm/gems/ruby-1.9.2-p290/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/utilities/tables/_scaffolding.scss */
-table th {
-  text-align: center;
+/* line 38, ../../../app/assets/stylesheets/sass/rankey.sass */
+h1, h2, h3, h4, h5, h6 {
   font-weight: bold;
-}
-/* line 6, ../../../../../.rvm/gems/ruby-1.9.2-p290/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/utilities/tables/_scaffolding.scss */
-table td,
-table th {
-  padding: 2px;
-}
-/* line 8, ../../../../../.rvm/gems/ruby-1.9.2-p290/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/utilities/tables/_scaffolding.scss */
-table td.numeric,
-table th.numeric {
-  text-align: right;
-}
-/* line 53, ../../../app/assets/stylesheets/sass/rankey.sass */
-table th:first-child {
-  -moz-border-radius-topleft: 12px;
-  -webkit-border-top-left-radius: 12px;
-  -o-border-top-left-radius: 12px;
-  -ms-border-top-left-radius: 12px;
-  -khtml-border-top-left-radius: 12px;
-  border-top-left-radius: 12px;
-}
-/* line 55, ../../../app/assets/stylesheets/sass/rankey.sass */
-table th:last-child {
-  -moz-border-radius-topright: 12px;
-  -webkit-border-top-right-radius: 12px;
-  -o-border-top-right-radius: 12px;
-  -ms-border-top-right-radius: 12px;
-  -khtml-border-top-right-radius: 12px;
-  border-top-right-radius: 12px;
-}
-/* line 57, ../../../app/assets/stylesheets/sass/rankey.sass */
-table tr:last-child td:first-child {
-  -moz-border-radius-bottomleft: 12px;
-  -webkit-border-bottom-left-radius: 12px;
-  -o-border-bottom-left-radius: 12px;
-  -ms-border-bottom-left-radius: 12px;
-  -khtml-border-bottom-left-radius: 12px;
-  border-bottom-left-radius: 12px;
-}
-/* line 59, ../../../app/assets/stylesheets/sass/rankey.sass */
-table tr:last-child td:last-child {
-  -moz-border-radius-bottomright: 12px;
-  -webkit-border-bottom-right-radius: 12px;
-  -o-border-bottom-right-radius: 12px;
-  -ms-border-bottom-right-radius: 12px;
-  -khtml-border-bottom-right-radius: 12px;
-  border-bottom-right-radius: 12px;
-}
-/* line 70, ../../../app/assets/stylesheets/sass/rankey.sass */
-table thead tr {
-  background: #dce3e5;
-  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #ffffff), color-stop(50%, #dce3e5), color-stop(100%, #bfcccf));
-  background-image: -webkit-linear-gradient(#ffffff, #dce3e5, #bfcccf);
-  background-image: -moz-linear-gradient(#ffffff, #dce3e5, #bfcccf);
-  background-image: -o-linear-gradient(#ffffff, #dce3e5, #bfcccf);
-  background-image: -ms-linear-gradient(#ffffff, #dce3e5, #bfcccf);
-  background-image: linear-gradient(#ffffff, #dce3e5, #bfcccf);
-}
-/* line 74, ../../../app/assets/stylesheets/sass/rankey.sass */
-table thead tr th {
-  text-align: left;
-  font-size: 0.8em;
-}
-/* line 77, ../../../app/assets/stylesheets/sass/rankey.sass */
-table tr {
-  background: #ebeff0;
-  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #ffffff), color-stop(100%, #dae1e3));
-  background-image: -webkit-linear-gradient(#ffffff, #dae1e3);
-  background-image: -moz-linear-gradient(#ffffff, #dae1e3);
-  background-image: -o-linear-gradient(#ffffff, #dae1e3);
-  background-image: -ms-linear-gradient(#ffffff, #dae1e3);
-  background-image: linear-gradient(#ffffff, #dae1e3);
-}
-/* line 80, ../../../app/assets/stylesheets/sass/rankey.sass */
-table tr.odd {
-  background: #e2e7e9;
-  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #ffffff), color-stop(100%, #bfc8cf));
-  background-image: -webkit-linear-gradient(#ffffff, #bfc8cf);
-  background-image: -moz-linear-gradient(#ffffff, #bfc8cf);
-  background-image: -o-linear-gradient(#ffffff, #bfc8cf);
-  background-image: -ms-linear-gradient(#ffffff, #bfc8cf);
-  background-image: linear-gradient(#ffffff, #bfc8cf);
-}
-/* line 84, ../../../app/assets/stylesheets/sass/rankey.sass */
-table tbody tr {
-  cursor: pointer;
-}
-/* line 86, ../../../app/assets/stylesheets/sass/rankey.sass */
-table tbody tr:hover {
-  background: #dadfe3;
-  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #ffffff), color-stop(100%, #a2b9a7));
-  background-image: -webkit-linear-gradient(#ffffff, #a2b9a7);
-  background-image: -moz-linear-gradient(#ffffff, #a2b9a7);
-  background-image: -o-linear-gradient(#ffffff, #a2b9a7);
-  background-image: -ms-linear-gradient(#ffffff, #a2b9a7);
-  background-image: linear-gradient(#ffffff, #a2b9a7);
-}
-
-/* line 90, ../../../app/assets/stylesheets/sass/rankey.sass */
-.sites {
-  display: block;
 }
 
 @font-face {
@@ -193,12 +81,12 @@ table tbody tr:hover {
   src: url('/fonts/nova_square.ttf') format('truetype'), url('/fonts/nova_square.otf') format('opentype');
 }
 
-/* line 110, ../../../app/assets/stylesheets/sass/rankey.sass */
+/* line 85, ../../../app/assets/stylesheets/sass/rankey.sass */
 html, body {
   height: 100%;
 }
 
-/* line 113, ../../../app/assets/stylesheets/sass/rankey.sass */
+/* line 88, ../../../app/assets/stylesheets/sass/rankey.sass */
 body {
   background: #dddddd;
   background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #dae1e3), color-stop(100%, #ffffff));
@@ -213,7 +101,7 @@ body {
   height: 100%;
 }
 
-/* line 121, ../../../app/assets/stylesheets/sass/rankey.sass */
+/* line 96, ../../../app/assets/stylesheets/sass/rankey.sass */
 a {
   color: #444444;
 }
@@ -222,7 +110,7 @@ a:hover {
   color: #555555;
 }
 
-/* line 125, ../../../app/assets/stylesheets/sass/rankey.sass */
+/* line 100, ../../../app/assets/stylesheets/sass/rankey.sass */
 input {
   padding: 4px 6px;
   width: 300px;
@@ -231,13 +119,13 @@ input {
   display: block;
 }
 
-/* line 131, ../../../app/assets/stylesheets/sass/rankey.sass */
+/* line 106, ../../../app/assets/stylesheets/sass/rankey.sass */
 input[type='submit'], input.submit {
   width: auto;
 }
 
-/* line 135, ../../../app/assets/stylesheets/sass/rankey.sass */
-input[type='submit'], input.submit, a.button, nav a {
+/* line 110, ../../../app/assets/stylesheets/sass/rankey.sass */
+input[type='submit'], input.submit, a.button, nav a, .sites_btn {
   display: inline-block;
   padding: 0.1em 1em 0.12em;
   outline: none;
@@ -259,76 +147,433 @@ input[type='submit'], input.submit, a.button, nav a {
   background: -moz-linear-gradient(top, #7f999f, #5e777e);
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#7f999f', endColorstr='#5e777e');
   color: #eef1f2;
-  -webkit-border-radius: 15px;
-  -moz-border-radius: 15px;
-  border-radius: 15px;
+  -webkit-border-radius: 12px;
+  -moz-border-radius: 12px;
+  border-radius: 12px;
   font-size: 0.8em;
-  padding: 4px 8px;
+  padding: 5px 10px;
 }
 /* line 108, ../../../app/assets/stylesheets/sass/mixins.sass */
-input[type='submit']:hover, input.submit:hover, a.button:hover, nav a:hover {
+input[type='submit']:hover, input.submit:hover, a.button:hover, nav a:hover, .sites_btn:hover {
   text-decoration: none;
 }
 /* line 110, ../../../app/assets/stylesheets/sass/mixins.sass */
-input[type='submit']:active, input.submit:active, a.button:active, nav a:active {
+input[type='submit']:active, input.submit:active, a.button:active, nav a:active, .sites_btn:active {
   position: relative;
   top: 1px;
 }
 /* line 79, ../../../app/assets/stylesheets/sass/mixins.sass */
-input[type='submit']:hover, input.submit:hover, a.button:hover, nav a:hover {
+input[type='submit']:hover, input.submit:hover, a.button:hover, nav a:hover, .sites_btn:hover {
   background-color: #536a6f;
   background: -webkit-gradient(linear, left top, left bottom, from(#769299), to(#536a6f));
   background: -moz-linear-gradient(top, #769299, #536a6f);
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#769299', endColorstr='#536a6f');
 }
 /* line 81, ../../../app/assets/stylesheets/sass/mixins.sass */
-input[type='submit']:active, input.submit:active, a.button:active, nav a:active {
+input[type='submit']:active, input.submit:active, a.button:active, nav a:active, .sites_btn:active {
   background-color: #769299;
   background: -webkit-gradient(linear, left top, left bottom, from(#5e777e), to(#769299));
   background: -moz-linear-gradient(top, #5e777e, #769299);
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#5e777e', endColorstr='#769299');
   color: #ced6d8;
 }
-
-/* line 141, ../../../app/assets/stylesheets/sass/rankey.sass */
-input[type='submit']:hover, input.submit:hover, a.button:hover, nav a:hover {
+/* line 116, ../../../app/assets/stylesheets/sass/rankey.sass */
+input[type='submit']:hover, input.submit:hover, a.button:hover, nav a:hover, .sites_btn:hover {
   color: #dddddd;
 }
 
-/* line 144, ../../../app/assets/stylesheets/sass/rankey.sass */
-h1, h2 {
-  font-family: Nova Square;
-  font-weight: bold;
-}
-
-/* line 148, ../../../app/assets/stylesheets/sass/rankey.sass */
+/* line 120, ../../../app/assets/stylesheets/sass/rankey.sass */
 h1 {
+  font-family: Nova Square;
   padding: 10px;
   font-size: 1.7em;
 }
 
-/* line 152, ../../../app/assets/stylesheets/sass/rankey.sass */
+/* line 125, ../../../app/assets/stylesheets/sass/rankey.sass */
 h2 {
-  padding: 9px 0;
-  font-size: 1.5em;
+  font-size: 1.3em;
 }
 
-/* line 158, ../../../app/assets/stylesheets/sass/rankey.sass */
+/* line 128, ../../../app/assets/stylesheets/sass/rankey.sass */
+h3 {
+  font-size: 1.3em;
+  margin: 10px 0;
+}
+
+/* line 133, ../../../app/assets/stylesheets/sass/rankey.sass */
 #rankey {
   padding: 10px;
 }
 
-/* line 161, ../../../app/assets/stylesheets/sass/rankey.sass */
+/* line 136, ../../../app/assets/stylesheets/sass/rankey.sass */
 nav {
   margin: 0 0 10px 10px;
 }
+/* line 138, ../../../app/assets/stylesheets/sass/rankey.sass */
+nav li.current a {
+  border: solid 1px #374649;
+  background-color: #3d4e52;
+  background: -webkit-gradient(linear, left top, left bottom, from(#5a7278), to(#3d4e52));
+  background: -moz-linear-gradient(top, #5a7278, #3d4e52);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#5a7278', endColorstr='#3d4e52');
+  color: #ebeded;
+}
+/* line 79, ../../../app/assets/stylesheets/sass/mixins.sass */
+nav li.current a:hover {
+  background-color: #334043;
+  background: -webkit-gradient(linear, left top, left bottom, from(#536a6f), to(#334043));
+  background: -moz-linear-gradient(top, #536a6f, #334043);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#536a6f', endColorstr='#334043');
+}
+/* line 81, ../../../app/assets/stylesheets/sass/mixins.sass */
+nav li.current a:active {
+  background-color: #536a6f;
+  background: -webkit-gradient(linear, left top, left bottom, from(#3d4e52), to(#536a6f));
+  background: -moz-linear-gradient(top, #3d4e52, #536a6f);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#3d4e52', endColorstr='#536a6f');
+  color: #c4c9cb;
+}
 
-/* line 164, ../../../app/assets/stylesheets/sass/rankey.sass */
+/* line 141, ../../../app/assets/stylesheets/sass/rankey.sass */
 #content {
   margin: 0 10px;
 }
 
-/* line 168, ../../../app/assets/stylesheets/sass/rankey.sass */
+/* line 144, ../../../app/assets/stylesheets/sass/rankey.sass */
+.clear {
+  clear: both;
+}
+
+/* line 147, ../../../app/assets/stylesheets/sass/rankey.sass */
+#search {
+  margin-right: 5px;
+  position: absolute;
+  right: 10px;
+  top: 60px;
+  font-size: 1.2em;
+}
+/* line 153, ../../../app/assets/stylesheets/sass/rankey.sass */
+#search img.icon {
+  display: none;
+}
+/* line 155, ../../../app/assets/stylesheets/sass/rankey.sass */
+#search .webkit img.icon {
+  position: absolute;
+  top: 13px;
+  left: 3px;
+  width: 11px;
+}
+
+/* line 161, ../../../app/assets/stylesheets/sass/rankey.sass */
+.firefox #search {
+  font-size: 0.6em;
+}
+
+/* line 164, ../../../app/assets/stylesheets/sass/rankey.sass */
+.sshot {
+  width: 300px;
+  height: 230px;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #b1c0c4), color-stop(100%, #ffffff));
+  background-image: -webkit-linear-gradient(#b1c0c4, #ffffff);
+  background-image: -moz-linear-gradient(#b1c0c4, #ffffff);
+  background-image: -o-linear-gradient(#b1c0c4, #ffffff);
+  background-image: -ms-linear-gradient(#b1c0c4, #ffffff);
+  background-image: linear-gradient(#b1c0c4, #ffffff);
+  border: 2px solid #ced8da;
+  -moz-transition-property: opacity;
+  -webkit-transition-property: opacity;
+  -o-transition-property: opacity;
+  transition-property: opacity;
+  -moz-transition-duration: 0.3s;
+  -webkit-transition-duration: 0.3s;
+  -o-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -moz-transition-timing-function: ease-in-quad;
+  -webkit-transition-timing-function: ease-in-quad;
+  -o-transition-timing-function: ease-in-quad;
+  transition-timing-function: ease-in-quad;
+  opacity: 1;
+}
+
+/* line 173, ../../../app/assets/stylesheets/sass/rankey.sass */
+a:hover .sshot {
+  border: 2px solid #769299;
+  opacity: 0.9;
+}
+
+/* line 177, ../../../app/assets/stylesheets/sass/rankey.sass */
+.sshot, .siteChart {
+  float: left;
+}
+
+/* line 180, ../../../app/assets/stylesheets/sass/rankey.sass */
+.keysListView {
+  clear: both;
+}
+
+/* line 184, ../../../app/assets/stylesheets/sass/rankey.sass */
+.siteChart {
+  height: 250px;
+  width: 500px;
+  margin-left: 20px;
+}
+
+/* line 189, ../../../app/assets/stylesheets/sass/rankey.sass */
+.favicon {
+  width: 22px;
+  position: relative;
+  top: 5px;
+}
+
+/* line 201, ../../../app/assets/stylesheets/sass/rankey.sass */
+table {
+  width: 100%;
+  border: 2px solid #69858c;
+  -moz-border-radius: 12px;
+  -webkit-border-radius: 12px;
+  -o-border-radius: 12px;
+  -ms-border-radius: 12px;
+  -khtml-border-radius: 12px;
+  border-radius: 12px;
+}
+/* line 2, ../../../../../.rvm/gems/ruby-1.9.2-p290/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/utilities/tables/_scaffolding.scss */
+table th {
+  text-align: center;
+  font-weight: bold;
+}
+/* line 6, ../../../../../.rvm/gems/ruby-1.9.2-p290/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/utilities/tables/_scaffolding.scss */
+table td,
+table th {
+  padding: 2px;
+}
+/* line 8, ../../../../../.rvm/gems/ruby-1.9.2-p290/gems/compass-0.11.5/frameworks/compass/stylesheets/compass/utilities/tables/_scaffolding.scss */
+table td.numeric,
+table th.numeric {
+  text-align: right;
+}
+/* line 57, ../../../app/assets/stylesheets/sass/rankey.sass */
+table th:first-child {
+  -moz-border-radius-topleft: 12px;
+  -webkit-border-top-left-radius: 12px;
+  -o-border-top-left-radius: 12px;
+  -ms-border-top-left-radius: 12px;
+  -khtml-border-top-left-radius: 12px;
+  border-top-left-radius: 12px;
+}
+/* line 59, ../../../app/assets/stylesheets/sass/rankey.sass */
+table th:last-child {
+  -moz-border-radius-topright: 12px;
+  -webkit-border-top-right-radius: 12px;
+  -o-border-top-right-radius: 12px;
+  -ms-border-top-right-radius: 12px;
+  -khtml-border-top-right-radius: 12px;
+  border-top-right-radius: 12px;
+}
+/* line 61, ../../../app/assets/stylesheets/sass/rankey.sass */
+table tr:last-child td:first-child {
+  -moz-border-radius-bottomleft: 12px;
+  -webkit-border-bottom-left-radius: 12px;
+  -o-border-bottom-left-radius: 12px;
+  -ms-border-bottom-left-radius: 12px;
+  -khtml-border-bottom-left-radius: 12px;
+  border-bottom-left-radius: 12px;
+}
+/* line 63, ../../../app/assets/stylesheets/sass/rankey.sass */
+table tr:last-child td:last-child {
+  -moz-border-radius-bottomright: 12px;
+  -webkit-border-bottom-right-radius: 12px;
+  -o-border-bottom-right-radius: 12px;
+  -ms-border-bottom-right-radius: 12px;
+  -khtml-border-bottom-right-radius: 12px;
+  border-bottom-right-radius: 12px;
+}
+/* line 209, ../../../app/assets/stylesheets/sass/rankey.sass */
+table tr td div {
+  text-align: center;
+  display: block;
+  position: static;
+  padding: 6px 10px;
+  -moz-border-radius: 24px;
+  -webkit-border-radius: 24px;
+  -o-border-radius: 24px;
+  -ms-border-radius: 24px;
+  -khtml-border-radius: 24px;
+  border-radius: 24px;
+  border: 1px solid #999999;
+  width: 30px;
+}
+/* line 219, ../../../app/assets/stylesheets/sass/rankey.sass */
 table th, table td {
   padding: 8px;
+}
+/* line 221, ../../../app/assets/stylesheets/sass/rankey.sass */
+table tr td:first-child, table tr th:first-child {
+  padding-left: 13px;
+}
+/* line 223, ../../../app/assets/stylesheets/sass/rankey.sass */
+table thead tr {
+  background: #dce3e5;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #334043), color-stop(50%, #5e777e), color-stop(100%, #769299));
+  background-image: -webkit-linear-gradient(#334043, #5e777e, #769299);
+  background-image: -moz-linear-gradient(#334043, #5e777e, #769299);
+  background-image: -o-linear-gradient(#334043, #5e777e, #769299);
+  background-image: -ms-linear-gradient(#334043, #5e777e, #769299);
+  background-image: linear-gradient(#334043, #5e777e, #769299);
+  color: white;
+  font-size: 0.8em;
+}
+/* line 225, ../../../app/assets/stylesheets/sass/rankey.sass */
+table thead tr th {
+  padding: 13px 8px;
+  text-align: left;
+}
+/* line 228, ../../../app/assets/stylesheets/sass/rankey.sass */
+table tr {
+  background: #ebeff0;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #ffffff), color-stop(100%, #dae1e3));
+  background-image: -webkit-linear-gradient(#ffffff, #dae1e3);
+  background-image: -moz-linear-gradient(#ffffff, #dae1e3);
+  background-image: -o-linear-gradient(#ffffff, #dae1e3);
+  background-image: -ms-linear-gradient(#ffffff, #dae1e3);
+  background-image: linear-gradient(#ffffff, #dae1e3);
+}
+/* line 231, ../../../app/assets/stylesheets/sass/rankey.sass */
+table tr.odd {
+  background: #e2e7e9;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #ffffff), color-stop(100%, #bfc8cf));
+  background-image: -webkit-linear-gradient(#ffffff, #bfc8cf);
+  background-image: -moz-linear-gradient(#ffffff, #bfc8cf);
+  background-image: -o-linear-gradient(#ffffff, #bfc8cf);
+  background-image: -ms-linear-gradient(#ffffff, #bfc8cf);
+  background-image: linear-gradient(#ffffff, #bfc8cf);
+}
+
+/* line 236, ../../../app/assets/stylesheets/sass/rankey.sass */
+tbody.sitesList tr, tbody.keysList tr {
+  -moz-transition-property: opacity;
+  -webkit-transition-property: opacity;
+  -o-transition-property: opacity;
+  transition-property: opacity;
+  -moz-transition-duration: 0.2s;
+  -webkit-transition-duration: 0.2s;
+  -o-transition-duration: 0.2s;
+  transition-duration: 0.2s;
+  -moz-transition-timing-function: ease-in-quad;
+  -webkit-transition-timing-function: ease-in-quad;
+  -o-transition-timing-function: ease-in-quad;
+  transition-timing-function: ease-in-quad;
+  opacity: 1;
+  cursor: pointer;
+}
+/* line 240, ../../../app/assets/stylesheets/sass/rankey.sass */
+tbody.sitesList tr:hover, tbody.keysList tr:hover {
+  opacity: 0.7;
+  color: black;
+  background: #dadfe3;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #ffffff), color-stop(100%, #85a48b));
+  background-image: -webkit-linear-gradient(#ffffff, #85a48b);
+  background-image: -moz-linear-gradient(#ffffff, #85a48b);
+  background-image: -o-linear-gradient(#ffffff, #85a48b);
+  background-image: -ms-linear-gradient(#ffffff, #85a48b);
+  background-image: linear-gradient(#ffffff, #85a48b);
+}
+
+/* line 246, ../../../app/assets/stylesheets/sass/rankey.sass */
+.keysListView table {
+  font-size: 0.9em;
+}
+
+/* line 250, ../../../app/assets/stylesheets/sass/rankey.sass */
+#tableBtns {
+  text-align: right;
+  margin: 10px 5px 0 0;
+  float: right;
+  font-size: 1.1em;
+}
+/* line 255, ../../../app/assets/stylesheets/sass/rankey.sass */
+#tableBtns div {
+  padding: 7px 14px;
+  -moz-border-radius: 24px;
+  -webkit-border-radius: 24px;
+  -o-border-radius: 24px;
+  -ms-border-radius: 24px;
+  -khtml-border-radius: 24px;
+  border-radius: 24px;
+  border: 1px solid #999999;
+}
+/* line 259, ../../../app/assets/stylesheets/sass/rankey.sass */
+#tableBtns .pos {
+  margin-bottom: 21px;
+  color: #3b6541;
+  border: 1px solid #3b6541;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #ffffff), color-stop(100%, #b0f1b9));
+  background-image: -webkit-linear-gradient(#ffffff, #b0f1b9);
+  background-image: -moz-linear-gradient(#ffffff, #b0f1b9);
+  background-image: -o-linear-gradient(#ffffff, #b0f1b9);
+  background-image: -ms-linear-gradient(#ffffff, #b0f1b9);
+  background-image: linear-gradient(#ffffff, #b0f1b9);
+  cursor: pointer;
+}
+/* line 265, ../../../app/assets/stylesheets/sass/rankey.sass */
+#tableBtns .totals {
+  color: #434141;
+  display: inline;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #ffffff), color-stop(100%, #bbb9b9));
+  background-image: -webkit-linear-gradient(#ffffff, #bbb9b9);
+  background-image: -moz-linear-gradient(#ffffff, #bbb9b9);
+  background-image: -o-linear-gradient(#ffffff, #bbb9b9);
+  background-image: -ms-linear-gradient(#ffffff, #bbb9b9);
+  background-image: linear-gradient(#ffffff, #bbb9b9);
+}
+
+/* line 275, ../../../app/assets/stylesheets/sass/rankey.sass */
+.site h2, .page h2 {
+  background: #dce3e5;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #334043), color-stop(50%, #5e777e), color-stop(100%, #769299));
+  background-image: -webkit-linear-gradient(#334043, #5e777e, #769299);
+  background-image: -moz-linear-gradient(#334043, #5e777e, #769299);
+  background-image: -o-linear-gradient(#334043, #5e777e, #769299);
+  background-image: -ms-linear-gradient(#334043, #5e777e, #769299);
+  background-image: linear-gradient(#334043, #5e777e, #769299);
+  color: white;
+  font-size: 0.8em;
+  border: 2px solid #69858c;
+  border-bottom: none;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+  -moz-border-radius-topleft: 12px;
+  -moz-border-radius-topright: 12px;
+  -webkit-border-top-left-radius: 12px;
+  -webkit-border-top-right-radius: 12px;
+  padding: 17px 12px;
+}
+/* line 283, ../../../app/assets/stylesheets/sass/rankey.sass */
+.site .cont, .page .cont {
+  border-left: 2px solid #69858c;
+  border-right: 2px solid #69858c;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #ebeff0), color-stop(100%, #b1c0c4));
+  background-image: -webkit-linear-gradient(#ebeff0, #b1c0c4);
+  background-image: -moz-linear-gradient(#ebeff0, #b1c0c4);
+  background-image: -o-linear-gradient(#ebeff0, #b1c0c4);
+  background-image: -ms-linear-gradient(#ebeff0, #b1c0c4);
+  background-image: linear-gradient(#ebeff0, #b1c0c4);
+  padding: 12px 12px;
+}
+/* line 289, ../../../app/assets/stylesheets/sass/rankey.sass */
+.site .foot, .page .foot {
+  border: 2px solid #69858c;
+  border-top: none;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #ffffff), color-stop(50%, #dce3e5), color-stop(100%, #bfcccf));
+  background-image: -webkit-linear-gradient(#ffffff, #dce3e5, #bfcccf);
+  background-image: -moz-linear-gradient(#ffffff, #dce3e5, #bfcccf);
+  background-image: -o-linear-gradient(#ffffff, #dce3e5, #bfcccf);
+  background-image: -ms-linear-gradient(#ffffff, #dce3e5, #bfcccf);
+  background-image: linear-gradient(#ffffff, #dce3e5, #bfcccf);
+  padding: 12px 12px;
+  border-bottom-left-radius: 12px;
+  border-bottom-right-radius: 12px;
+  -moz-border-radius-bottomleft: 12px;
+  -moz-border-radius-bottomright: 12px;
+  -webkit-border-bottom-left-radius: 12px;
+  -webkit-border-bottom-right-radius: 12px;
 }

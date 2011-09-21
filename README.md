@@ -7,6 +7,12 @@
 - ditte che fanno servizio di seo e sem con tanti siti web 
 
 
+### insights
+
+GET http://www.google.com/insights/search/overviewReport?q=QUERY&content=1
+
+
+
 ---
 
 sibil87
@@ -18,17 +24,7 @@ liquid diamond - freeleancer
 
 giorgio soffiato marketing arena
 
----
-google insight (for search)
 
-add marco.massara on skype
-
-
----
-brunobellissimo
-
-# tassa.li
-# qurami.com
 
 ---
 

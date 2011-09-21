@@ -3,7 +3,7 @@ class Engine
   ENGINES = [:google, :yahoo, :msn]
   
   def self.name(idx)
-    ENGINES[idx]
+    ENGINES[idx-1]
   end
   
   def self.id(name)

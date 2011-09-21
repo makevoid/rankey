@@ -11,9 +11,7 @@ class SitesView extends Backbone.View
   render: ->
     content = Utils.haml "#sitesView", {}
     $(@el).html content 
-    
-    Sites.each (site) =>
-      this.addOne(site)
+    this.addAll()
     
     this
   
@@ -25,7 +23,7 @@ class SitesView extends Backbone.View
     Loading.loaded()
     this.$(".sitesList").append content
     
-  addAll: ->  
-    Sites.each this.addOne
-    
+  addAll: ->    
+    Sites.each (site) =>
+      this.addOne(site)
   

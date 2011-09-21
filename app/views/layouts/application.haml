@@ -9,20 +9,19 @@
     %meta{ name: "author", content: "" }    
     %meta{ name: "viewport", content: "width=device-width, initial-scale=1.0" }
     = stylesheet_link_tag    "application" 
-    = csrf_meta_tag 
+    = csrf_meta_tag       
     %body{ class: body_class }
       #container
         %header
           %h1 Rankey
         %nav
           %ul
-            %li= link_to "Home", js_void, :"data-url" => ""
-            %li= link_to "blank", js_void, :"data-url" => "blank"
+            %li.current= link_to "Sites", js_void, :"data-url" => ""
+            %li= link_to "blank", js_void, :"data-url" => "not_found"
         #content
           = yield
       %footer
       
       = render partial: "rankey/backbone_views"
-      
       
       = javascript_include_tag "application"

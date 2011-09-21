@@ -10,6 +10,8 @@
 //= require ./vendor/backbone
 //= require ./vendor/haml
 //= require ./vendor/jquery
+//= require ./vendor/jquery-xcolor
+//= require ./vendor/jquery-flot
 //= require models
 //= require utils
 //= require_tree ./collections
