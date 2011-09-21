@@ -55,6 +55,8 @@ group :development, :testing, :production, :app do
   
   # gem 'thin'
   gem "unicorn"
+  
+  gem 'compass'#, :git => 'git://github.com/chriseppstein/compass.git', :branch => 'rails31'
 end
 
 
@@ -86,7 +88,7 @@ group :assets do
   gem 'coffee-rails', "~> 3.1.0"#, git: "git://github.com/rails/coffee-rails.git"
   gem 'uglifier'
   # gem "compass"
-  gem 'compass'#, :git => 'git://github.com/chriseppstein/compass.git', :branch => 'rails31'
+  
 end
 
 
