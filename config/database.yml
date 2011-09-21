@@ -13,5 +13,5 @@ test:
   <<: *defaults
 production:
   database: rankey_production
-  password: PASSWORD
+  password: secret
   <<: *defaults
