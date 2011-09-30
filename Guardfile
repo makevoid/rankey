@@ -43,4 +43,3 @@ end
 # end
 
 guard 'coffeescript', :input => 'spec/javascripts'
-
