@@ -12,6 +12,11 @@ Rankey::Application.routes.draw do
   root to: backbone
   get "/not_found", to: backbone
   
+  
+  get "/login", to: backbone
+  
+  post "/sessions", to: "sessions#create"
+  
   # get "/sites", to: backbone
   # get "/sites/:site_id", to: backbone
 end

@@ -1,6 +1,29 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
   
+  def login_url
+    raise "why?".inspect
+    "/login"
+  end
+  # before_filter :require_login
+  before_filter :check_user
+  
+  def session_valid?(session)
+    User.first(session: session)
+  end
+  
+  
+  def check_user 
+    user_session = session[:user_session]
+    user = if user_session
+      session_valid?(user_session).attributes
+    else
+      {}
+    end
+    @current_user_data = { session: user_session }.merge(user).to_json
+  end
+  
+  
   def not_authenticated
     redirect_to login_url, :alert => "First login to access this page."
   end

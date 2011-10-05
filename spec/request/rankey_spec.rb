@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "Rankey" do
+describe "Rankey", :type => :request  do
   
   it "should render the app page (/)" do
     visit "/"

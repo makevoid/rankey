@@ -56,7 +56,10 @@ sites = [
 ]
 
 
-user = User.create name: "makevoid", email: "makevoid@gmail.com"
+user = User.new
+user.username = "makevoid@gmail.com"
+user.password = "secret"
+user.save
 
 sites.each do |site|
   site_obj = Site.create name: site[:name]

@@ -37,22 +37,26 @@ class KeyRow extends Backbone.View
       # console.log "pos ", pos, "val ", val, "rg: #{red},#{green}"
       # $(td).css("background", "rgb(#{red},#{green},#{base})")
 
-      types = ["-webkit", "-moz", "-o", ""]
-      for type in types
-        color = "rgb(#{red},#{green},#{base})"
-        gradient = "#{type}-linear-gradient(#ffffff, #{color} )"
-        
-        
-        if only_pos 
-          if pos < 30 # TODO: set Rankey::POS_OK
-            color = $.xcolor.darken(color, 1, 40)
-          else
-            color = $.xcolor.lighten(color, 1, darkAmount*1.1)
-              
-        darkColor = $.xcolor.darken(color, 1, darkAmount)
+      # types = ["-webkit-", "-moz-", "-o-", ""]
+      # types = ["-webkit-"]
+      # for type in types
       
-        $(td).css({background: gradient, color: darkColor, borderColor: darkColor})
-  
+      color = "rgb(#{red},#{green},#{base})"
+      color = $.xcolor.webround(color).getHex()
+      # gradient = "-webkit-gradient(linear,left top,left bottom,from(#a4a4a4),to(#FFFFFF));"
+        
+        
+      if only_pos 
+        if pos < 30 # TODO: set Rankey::POS_OK
+          color = $.xcolor.darken(color, 1, 40)
+        else
+          color = $.xcolor.lighten(color, 1, darkAmount*1.1)
+            
+      darkColor = $.xcolor.darken(color, 1, darkAmount)
+      
+
+      $(td).css({color: darkColor, borderColor: darkColor})
+      $(td).css("background", color)
       # -webkit-linear-gradient(#ffffff, #bfc8cf)
 
   

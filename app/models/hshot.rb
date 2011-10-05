@@ -10,7 +10,7 @@ end
 
 class HShot
 
-  SIZE = '300x230' # screenshot size
+  SIZE = '500x350' # screenshot size
   
   require 'url2png'
   require 'net/http'

@@ -1,17 +1,76 @@
+require 'digest/sha2'
+
 class User
   include DataMapper::Resource
   
   # belongs_to :role
   
   property :id, Serial
-  property :name, String, length: 150
   property :email, String, length: 150
+  property :name, String, length: 150
   property :crypted_password, String
   property :salt, String
+  
+  property :session, String
   property :created_at, DateTime
   property :updated_at, DateTime
   
+  
+  
+  def username=(user)
+    self.email = user
+  end
+  
+  attr_accessor :password
+  
+  before :save do
+    if self.password
+      self.salt = User.generate_salt
+      self.crypted_password = User.crypt(self.password, self.salt)
+    end
+    self.generate_session
+  end
+  
+  def generate_session
+    str = "_#{Time.now.to_i}>.<#{User.secret_key.reverse}lalalal"
+    self.session = Digest::SHA2.hexdigest(str)[0..15]
+  end
+  
+  def generate_session!
+    generate_session
+    save
+  end
+  
+  def self.secret_key
+    "antanisupercazzolasblinda"
+  end
+  
+  def good_password?(pass)
+    crypted_password == crypt(pass)
+  end
+  
+  def crypt(pass)
+    User.crypt(pass, salt)
+  end
+  
+  def self.crypt(pass, salt)
+    Digest::SHA2.hexdigest("#{pass}o.O#{salt}:v#{self.secret_key}")[0..30]
+  end
+  
+  def self.generate_salt
+    str = "_#{Time.now.to_i}_#{self.secret_key}"
+    Digest::SHA2.hexdigest(str)[0..20]
+  end
+  
+  
+  
   # authenticates_with_sorcery! # ar only
+  
+  def self.authenticate(username, password, remember_me)
+    user = User.first email: username
+    user if !user.nil? && user.good_password?(password)
+  end
+  
   
   # TODO absolutely
   

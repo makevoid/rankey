@@ -11,6 +11,7 @@
 //= require ./vendor/haml
 //= require ./vendor/jquery
 //= require ./vendor/jquery-xcolor
+//= require ./vendor/jquery-gradienter
 //= require ./vendor/jquery-flot
 //= require models
 //= require utils

@@ -50,7 +50,12 @@
 $default-radius: 12px
 
 
-$table-color: #EBEFF0
+//$table-color: #D2DEEC  // blue
+$table-color: #EBEDF0    // grey
+//$table-color: #EBE7DD  // gold
+
+// E4D5DD // pink
+//$table-color: #F0ECEB
 
 
 =table-rounded-borders
@@ -77,7 +82,7 @@ $alt: #666
 $links: #444
 
 
-+font-face("Nova Square", font-files("nova_square.ttf", truetype, "nova_square.otf", opentype))
++font-face("Nova Square", font-files("../fonts/nova_square.ttf", truetype, "../fonts/nova_square.otf", opentype))
 
   
 
@@ -139,7 +144,9 @@ nav
     +color(darken($table-color, 65%))
   
 #content
+  min-width: 600px
   margin: 0 10px
+
   
 .clear 
   clear: both
@@ -162,8 +169,8 @@ nav
   font-size: 0.6em
 
 .sshot
-  width: 300px
-  height: 230px
+  width: 200px
+  height: 130px
   // padding: 10px
   +background-image(linear-gradient(darken($table-color, 20%), #fff))
   border: 2px solid darken($table-color, 10%)
@@ -183,7 +190,7 @@ a:hover .sshot
 
 .siteChart
   height: 250px
-  width: 500px
+  width: 400px
   margin-left: 20px
   
 .favicon
@@ -210,8 +217,8 @@ table
       text-align: center
       display: block
       position: static
-      padding: 6px 10px
-      +border-radius($default-radius*2)
+      padding: 6px 8px
+      +border-radius($default-radius*15)
       border: 1px solid #999
       width: 30px
   
@@ -227,10 +234,10 @@ table
       text-align: left
   tr
     background: $table-color
-    +background-image(linear-gradient(#fff, darken(adjust-hue($table-color, 0deg), 6%)))
+    +background-image(linear-gradient(#fff, darken(adjust-hue($table-color, -10deg), 6%)))
   tr.odd
     background: darken(adjust-hue($table-color, 10deg), 3%)
-    +background-image(linear-gradient(#fff, darken(adjust-hue($table-color, 15deg), 15%)))
+    +background-image(linear-gradient(#fff, darken(adjust-hue($table-color, 25deg), 6%)))
  
 
 tbody.sitesList tr, tbody.keysList tr
@@ -248,6 +255,7 @@ tbody.sitesList tr, tbody.keysList tr
   
   
 #tableBtns
+  clear: left
   text-align: right
   margin: 10px 5px 0 0
   float: right

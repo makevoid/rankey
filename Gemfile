@@ -4,7 +4,7 @@ DM_VERSION    = '~> 1.2.0.rc1'
 # DM_VERSION    = '~> 1.1.0'
 
 
-group :development, :testing, :production, :dm do
+group :development, :test, :production, :dm do
   gem 'mysql2'
   gem 'dm-core'        , DM_VERSION
   gem 'dm-mysql-adapter'     , DM_VERSION
@@ -20,7 +20,7 @@ group :development, :testing, :production, :dm do
 end
 # gem 'dm-core'       
 
-group :development, :testing, :production, :app do
+group :development, :test, :production, :app do
   gem 'activesupport',       :require => 'active_support'
   gem 'actionpack',          :require => 'action_pack'
   gem 'actionmailer',        :require => 'action_mailer'
@@ -56,7 +56,7 @@ group :development, :testing, :production, :app do
   # gem 'thin'
   gem "unicorn"
   
-  gem 'compass'#, :git => 'git://github.com/chriseppstein/compass.git', :branch => 'rails31'
+  gem 'compass', :git => 'git://github.com/chriseppstein/compass.git'#, :branch => 'rails31'
 end
 
 
@@ -71,7 +71,7 @@ end
 group :development, :test do
   gem "rspec-rails", "~> 2.6"
   gem "jasmine", group: [:development, :test]
-  gem "spork"
+  gem "spork", git: "https://github.com/timcharper/spork.git" # fix deprecation of Gem.latest_load_paths 
 end
 
 group :test do

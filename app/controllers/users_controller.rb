@@ -4,8 +4,15 @@ class UsersController < ApplicationController
   
   layout nil
 
+  def index
+    require_login
+    { users: User.all.map{ |u| u.attributes } }
+  end
+
   def create
-    user = User.new params[:user]
+    user = User.new 
+    user.username = params[:user][:username]
+    user.password = params[:user][:password]
     resp = if user.save
       { success: { message: "Logged in!" } }
     else

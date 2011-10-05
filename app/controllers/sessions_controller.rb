@@ -7,9 +7,11 @@ class SessionsController < ApplicationController # Auth
   # TODO: translations 1
   
   def create
-    user = login(params[:email], params[:password], params[:remember_me])
+    user = login(params[:username], params[:password], params[:remember_me])
     resp = if user
-      { success: { message: "Logged in!" } }
+      user.generate_session!
+      session[:user_session] = user.session
+      { success: { message: "Logged in!" }, token: user.session }
     else
       { error:  { name: "auth_error", message: "Email or password was invalid" } }
     end
@@ -18,6 +20,7 @@ class SessionsController < ApplicationController # Auth
   
   def destroy
     logout
+    session[:user_session] = user.session
     render json: { success: { message: "Logged out!" } }
   end
   

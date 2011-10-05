@@ -1,4 +1,5 @@
 class User extends Backbone.Model
+  url: "users"
   
 class Key extends Backbone.Model  
   initialize: ->
