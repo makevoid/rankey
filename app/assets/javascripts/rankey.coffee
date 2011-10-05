@@ -4,6 +4,7 @@ class RankeyRouter extends Backbone.Router
   routes: {
     '': "home",
     'login': "login",
+    'sites': 'sites',
     'sites/:site_id': 'site',
     'not_found': 'blank',
   }
@@ -33,9 +34,12 @@ class RankeyRouter extends Backbone.Router
   
   go_home: ->
     if @cur_user.is_logged
-      @main_view.sites()
+      this.sites()
     else
       this.login()
+
+  sites: ->
+    @main_view.sites()
 
   login: ->
     @main_view.showLogin()

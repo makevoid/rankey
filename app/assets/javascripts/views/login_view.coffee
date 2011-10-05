@@ -20,6 +20,8 @@ class LoginView extends Backbone.View
         self.show_message "Wrong Email or password, please recheck!"
       else
         self.show_message "logged in: #{data}"
+        g.userData = data
+        Rankey.navigate "sites", true
       console.log data
     )
   

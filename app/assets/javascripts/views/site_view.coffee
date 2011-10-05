@@ -22,10 +22,11 @@ class SiteView extends Backbone.View
   render: ->
     content = Utils.haml "#siteView", @model
     $(@el).html content 
-
+    
     this.keys()    
     this.chart()
     this.bindTableBtns()
+    Loading.loaded()
   
   keys: ->
     @keysView = new KeysListView({ collection: @siteKeys })
