@@ -2,54 +2,37 @@ g = window
 
 class RankeyRouter extends Backbone.Router
   routes: {
-    '': "home",
+    '': "sites",
     'login': "login",
+    'logout': "logout",
     'sites': 'sites',
     'sites/:site_id': 'site',
+    'logout': 'logout',
     'not_found': 'blank',
   }
 
   initialize: ->
-    @main_view = new RankeyView() 
-    this.check_login()
-    
-  
-  check_login: ->    
     @cur_user = new User()
-    if g.userData && g.userData.session
-      @cur_user.set({ session: g.userData.session })
-      this.go_home()
-    else
-      this.login()
-      # TODO: get user from page variable
-      # @cur_user.fetch()
-
+    g.cur_user = @cur_user
+    @main_view = new RankeyView() 
+    this.sites()
     
-  
-  home: ->
-    if @cur_user.is_synced 
-      this.go_home()
-    else
-      @cur_user.bind("change", this.go_home)
-  
-  go_home: ->
-    if @cur_user.is_logged
-      this.sites()
-    else
-      this.login()
-
   sites: ->
+    return this.login() unless @cur_user.logged
     @main_view.sites()
 
   login: ->
     @main_view.showLogin()
 
+  logout: ->
+    console.log "logging out"
+    g.userData = {}
+    g.cur_user.set(session: null, name: null, email: null, logged: false)
+    Rankey.navigate "login", true
+    # ...
+
   site: (site_id) ->
     @main_view.site(site_id)
-
-  is_logged_in = ->
-    false
-
 
   blank: ->
     content = "

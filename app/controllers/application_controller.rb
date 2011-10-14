@@ -16,7 +16,8 @@ class ApplicationController < ActionController::Base
   def check_user 
     user_session = session[:user_session]
     user = if user_session
-      session_valid?(user_session).attributes
+      user = session_valid?(user_session)
+      user ? user.attributes : {}
     else
       {}
     end

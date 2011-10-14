@@ -1,6 +1,9 @@
 class User extends Backbone.Model
   url: "users"
   
+  logged: ->
+    @attributes.logged
+  
 class Key extends Backbone.Model  
   initialize: ->
     positions = []

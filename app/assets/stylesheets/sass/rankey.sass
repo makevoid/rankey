@@ -112,7 +112,7 @@ input[type='submit'], input.submit
   width: auto
 
 
-input[type='submit'], input.submit, a.button, nav a, .sites_btn
+input[type='submit'], input.submit, a.button, a.btn, nav a, .sites_btn
   +button
   +color(darken($table-color, 50%))
   +rounded(12px)
@@ -140,14 +140,19 @@ h3
 
 nav
   margin: 0 0 10px 10px 
+  li
+    margin: 0 5px 0 0
   li.current a
     +color(darken($table-color, 65%))
   
 #content
   min-width: 600px
   margin: 0 10px
-
-  
+    
+#login  
+  margin: 5px 5px 0 0
+  float: right
+    
 .clear 
   clear: both
 

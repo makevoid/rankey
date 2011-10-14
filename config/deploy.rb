@@ -1,9 +1,9 @@
 set :application, "rankey"
 
 
-set :domain,      "makevoid.com"
+set :domain,      "rankey.mkvd.net"
 
-set :repository,  "svn://#{domain}/svn/#{application}"
+# set :repository,  "svn://#{domain}/svn/#{application}"
 
 
 set :apps,        "/www"
@@ -24,7 +24,7 @@ set :branch, "master"
 set :password,  File.read("/Users/makevoid/.password").strip
 set :scm_passphrase, password  # The deploy user's password
 
-ssh_options[:forward_agent] = true
+# ssh_options[:forward_agent] = true
 #set :deploy_via, :remote_cache
 
 
@@ -69,6 +69,7 @@ namespace :deploy do
   desc "Create symlinks (managing server)"
   task :create_symlinks do
     run "cd #{current_path}/public; ln -s #{deploy_to}/shared/pdf pdf"
+    run "mkdir -p #{current_path}/tmp"
   end  
   
   desc "Create database yml"

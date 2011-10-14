@@ -11,7 +11,7 @@ class SessionsController < ApplicationController # Auth
     resp = if user
       user.generate_session!
       session[:user_session] = user.session
-      { success: { message: "Logged in!" }, token: user.session }
+      { success: { message: "Logged in!" }, session: user.session, name: user.name, email: user.email }
     else
       { error:  { name: "auth_error", message: "Email or password was invalid" } }
     end

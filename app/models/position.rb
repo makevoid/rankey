@@ -2,6 +2,7 @@ class Position
   include DataMapper::Resource
   
   belongs_to :key
+  # property :key_id, Integer, index: true
   # belongs_to :engine
   
   property :id, Serial

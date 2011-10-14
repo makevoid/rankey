@@ -7,6 +7,11 @@ class SiteRow extends Backbone.View
   
   render: ->
     $(this.el).html Utils.haml("#siteRow", this.model) 
+    
+    $(this.el).find(".favicon").bind("error", ->
+      favicon_placeholder = "/favicon.ico"
+      $(this).attr("src", favicon_placeholder)
+    )
     this
     
   openSite: ->

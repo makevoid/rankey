@@ -18,7 +18,10 @@ group :development, :test, :production, :dm do
   # gem 'dm-timestamps'        , DM_VERSION
   # gem 'dm-observer'          , DM_VERSION
 end
-# gem 'dm-core'       
+
+group :dm_test do
+  gem "nokogiri"
+end     
 
 group :development, :test, :production, :app do
   gem 'activesupport',       :require => 'active_support'

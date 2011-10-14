@@ -9,7 +9,9 @@ require 'bundler'
 require 'bundler/setup'
 Bundler.require(:dm)
 
-DataMapper.setup(:default, "mysql://localhost/rankey_development")
+env = ARGV[0] || "development"
+
+DataMapper.setup(:default, "mysql://localhost/rankey_#{env}")
 require models_path("engine")
 
 models = Dir.glob models_path("*.rb")
@@ -18,6 +20,8 @@ models.each do |model|
 end
 
 DataMapper.auto_migrate!
+
+exit if env == "test"
 
 sites = [
   { 
@@ -56,7 +60,7 @@ sites = [
 ]
 
 
-user = User.new
+user = User.new(name: "Francesco Canessa")
 user.username = "makevoid@gmail.com"
 user.password = "secret"
 user.save

@@ -12,10 +12,12 @@ class HShot
 
   SIZE = '500x350' # screenshot size
   
-  require 'url2png'
-  require 'net/http'
+  def initialize
+    require 'url2png'
+    require 'net/http'
 
-  include Url2png::Helpers::Common
+    include Url2png::Helpers::Common
+  end
   
   def get(site)
     site if valid?(site)

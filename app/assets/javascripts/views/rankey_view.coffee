@@ -5,6 +5,7 @@ class RankeyView extends Backbone.View
   initialize: ->
     this.render()
     this.initNav()
+    this.initLoggedView()
       
   render: ->
     content = Utils.haml "#rankeyView", {}
@@ -14,10 +15,17 @@ class RankeyView extends Backbone.View
     loginView = new LoginView()
     loginView.render()
     
+  initLoggedView: ->
+    loggedView = new LoggedView()
+    loggedView.render()  
+    
   initNav: ->
-    $("nav a").bind("click", ->
-      Rankey.navigate "#{$(this).attr("data-url")}", true
-    )
+    if g.cur_user.logged
+      navView = new NavView()
+      navView.render()
+      $("nav a").bind("click", ->
+        Rankey.navigate "#{$(this).attr("data-url")}", true
+      )
 
   sites: ->
     @sitesView = new SitesView()

@@ -1,14 +1,13 @@
 class SiteChart extends Backbone.View
   
-  el: ".siteChart"
+  ele: ".siteChart"
 
   initialize: (opts) ->
     @collection = opts["collection"]
-    
+    @el = @ele # FIXME: why do I need this?
     @collection.bind("reset", this.render, this)  
     
-    
-  render: ->
+  render: ->  
     
     do_resize = (elem) ->
       width = $(".cont").width() /2.12# - 500
@@ -34,7 +33,7 @@ class SiteChart extends Backbone.View
         pos.push [idx, model.attributes.pos]
         avg.push [idx, model.attributes.avg]
         idx++
-
+      
       width = width = $(".cont").width() /2.12
       width = Math.max Math.min( width, 400), 250
       if (width == 400)
@@ -42,12 +41,12 @@ class SiteChart extends Backbone.View
       height = window.sshot_ratio * width
       if (width > 400)
         height = Math.min( width, window.sshot_ratio*400)
+      
       $(@el).css({ width: width, height: height})
-      $.plot(@el, [ pos, avg ]);
+      $.plot(@el, [ pos, avg ])
 
 
     # main
-
     resize_sshot()
     draw_chart()
     

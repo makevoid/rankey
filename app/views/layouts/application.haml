@@ -12,12 +12,10 @@
     = csrf_meta_tag       
   %body{ class: body_class }
     #container
+      #login
       %header
         %h1 Rankey
-      %nav
-        %ul
-          %li.current= link_to "Sites", js_void, :"data-url" => ""
-          %li= link_to "blank", js_void, :"data-url" => "not_found"
+      #nav
       #outer_content
         = yield
         

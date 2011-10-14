@@ -21,8 +21,9 @@ class LoginView extends Backbone.View
       else
         self.show_message "logged in: #{data}"
         g.userData = data
+        g.cur_user.set(session: data.session, name: data.name, email: data.email, logged: true)
+        console.log "user: ", cur_user
         Rankey.navigate "sites", true
-      console.log data
     )
   
   # TODO move in UI

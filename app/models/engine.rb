@@ -10,4 +10,8 @@ class Engine
     ENGINES.index name.to_sym
   end
   
+  def self.eng(name)
+    name.constantize
+  end
+  
 end
