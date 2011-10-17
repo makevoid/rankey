@@ -1,6 +1,6 @@
 require_relative "../models/scraper"
 
-Scraper.testing = true
+
 
 class ScraperWorker
   

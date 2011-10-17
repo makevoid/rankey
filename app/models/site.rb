@@ -6,6 +6,10 @@ class Site
   
   has n, :keys
   
+  before :save do
+    puts "TODO: check if the name is in this format: 'abc.com'"
+  end
+  
   
   def keys_pos_count
     Position.today.all(key: keys, fields: [:pos]).map do |p| 

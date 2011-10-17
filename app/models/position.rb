@@ -49,7 +49,7 @@ class Position
   end
   
   def engine
-    Engine.name(engine_id)
+    Engine.engine_name(engine_id)
   end
   
 end

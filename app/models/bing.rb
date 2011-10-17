@@ -1,48 +1,60 @@
-path = File.expand_path "../../../", __FILE__
 require_relative "engine"
 
-
 class Bing < Engine
+  
+  RESULTS_NUM = 100 # max is 200 for bing
+  
+  # TODO: remove?
+  # path = File.expand_path "../../../", __FILE__
+  # require "#{path}/lib/nokogiri_exts"
+  
   def self.id
     3
   end
   
   def self.base_url(query)
-    "http://www.bing.com/search?q=#{query}&n=100"
+    "http://www.bing.com/search?q=#{query}&n=#{RESULTS_NUM}"
   end
   
   def self.page_results(page)
-    results = page.search("#results")
+    # results = page.search(".sb_results")
+    # puts results.inspect
     # "#spns em" -> sponsored results
-    results.search("cite")
+    page.search("cite")
+  end
+  
+  # only for bing (guess why)
+  def self.add_cookies(agent)
+    uri, path, domain = URI.parse('http://bing.com'), "/", ".bing.com"
+
+    cookie = Mechanize::Cookie.new "DOB", "20111011"
+    cookie.domain = domain; cookie.path = path
+    agent.cookie_jar.add uri, cookie
+
+    cookie = Mechanize::Cookie.new "SRCHHPGUSR", "NEWWND=0&NRSLT=#{RESULTS_NUM}" 
+    cookie.domain = domain; cookie.path = path
+    agent.cookie_jar.add uri, cookie
   end
   
 end
 
-require 'mechanize'
-require "#{path}/lib/nokogiri_exts"
-
-m = Mechanize.new
-m.user_agent = 'Mac Safari'
 
 
-def add_cookies(agent)
-  uri, path, domain = URI.parse('http://bing.com'), "/", ".bing.com"
-  
-  cookie = Mechanize::Cookie.new "DOB", "20111011"
-  cookie.domain = domain; cookie.path = path
-  agent.cookie_jar.add uri, cookie
 
-  cookie = Mechanize::Cookie.new "SRCHHPGUSR", "NEWWND=0&NRSLT=100" # max is 200
-  cookie.domain = domain; cookie.path = path
-  agent.cookie_jar.add uri, cookie
-end
 
-add_cookies(m)
+# 
+# m = Mechanize.new
+# m.user_agent = 'Mac Safari'
+# 
+# 
+# 
+# add_cookies(m)
+# 
+# page = m.get "http://www.bing.com/search?q=makevoid&n=50"
+# 
+# p page.body
 
-page = m.get "http://www.bing.com/search?q=makevoid&n=50"
 
-p page.body
 
 # Bing.page_results(page).each_with_index do |txt, idx|
 #   p idx+1, txt.inner_link_text

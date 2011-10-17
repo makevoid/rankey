@@ -1,10 +1,15 @@
+require_relative "engine"
+
+# path = File.expand_path "../", __FILE__
+# require "#{path}/engine"
+
 class Google < Engine
   def self.id
     1
   end
   
   def self.base_url(query)
-    "http://google.com/search?q=#{query}&num=100"
+    "http://google.com/search?num=100&q=#{query}"
   end
   
   def self.page_results(page)

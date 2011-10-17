@@ -1,3 +1,5 @@
+require_relative "engine"
+
 class Yahoo < Engine
   def self.id
     2

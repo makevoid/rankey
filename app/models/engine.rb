@@ -1,17 +1,19 @@
 class Engine
   
-  ENGINES = [:google, :yahoo, :msn]
+  ENGINES = [:google, :yahoo, :bing]
   
-  def self.name(idx)
-    ENGINES[idx-1]
+  def self.all
+    ENGINES.map{ |e| e.name.constantize }
   end
   
-  def self.id(name)
-    ENGINES.index name.to_sym
+  
+  def self.engine_name(idx=nil)
+    if idx 
+      ENGINES[idx-1]
+    else
+      name.downcase
+    end
   end
   
-  def self.eng(name)
-    name.constantize
-  end
   
 end

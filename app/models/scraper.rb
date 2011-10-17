@@ -1,56 +1,60 @@
-PATH = File.expand_path "../../../", __FILE__
-FIXTURE = {}
+path = File.expand_path "../../../", __FILE__
+SCRAPER_PATH = path
 
-require "#{PATH}/lib/nokogiri_exts"
+require 'nokogiri'
+require "#{path}/lib/nokogiri_exts"
+require_relative "google"
+require_relative "yahoo"
+require_relative "bing"
 
 class Scraper
   
-  @@testing = false
-  
-  def initialize
-    unless @@testing
-      require 'mechanize'
-      @agent = Mechanize.new
-      @agent.user_agent = 'Mac Safari'
-    end
+  def initialize(options={fixture: false})
+    @options = options
+    require 'mechanize'
+    @agent = Mechanize.new
+    @agent.user_agent = 'Mac Safari'
   end
   
-  def self.testing=(t)
-    @@testing = t
-    if t
-      require 'nokogiri'
-      FIXTURE[:google] = Nokogiri::HTML File.read("#{PATH}/spec/fixtures/google_ebisu.html")
-      FIXTURE[:yahoo] = Nokogiri::HTML File.read("#{PATH}/spec/fixtures/yahoo_ebisu.html")
-      FIXTURE[:bing] = Nokogiri::HTML File.read("#{PATH}/spec/fixtures/bing_ebisu.html")
-    end
-  end
+  def scrape(engine, domain, key)
+    page = get(engine, key)
+    # raise page.inner_html.inspect
+    # raise engine.page_results(page).inspect
+    # engine.page_results(page).inspect
   
-  def get(engine, key)
-    unless @@testing
-      @agent.get Google.base_url(key)
-    else
-      FIXTURE[engine]
-    end
-  end
-  
-  def scrape(domain, key)
-    page = get(:google, key)
-    Google.page_results(page).each_with_index do |res, idx|
+    engine.page_results(page).each_with_index do |res, idx|
       dom = res.inner_link_text
       # puts dom
+      # puts domain
       return idx+1 if dom.include? domain
     end
     nil
   end
   
-  def scrape_with(key, engine)
-    
+  
+  private
+  
+  def get(engine, key)
+    unless @options[:fixture]
+      engine.add_cookies @agent if engine == Bing
+      @agent.get engine.base_url(key)
+      # @agent.get Google.base_url(key)
+    else
+      get_fixture engine, key
+    end
   end
   
+  def get_fixture(engine, key)
+    key = key.downcase.gsub(/\s+/, '_')
+    Nokogiri::HTML File.read("#{SCRAPER_PATH}/spec/fixtures/#{engine.engine_name}_#{key}.html")
+  end
+
 end
 # 
-# require_relative "engine"
-# require_relative "google"
-# Scraper.testing = true
+
+
+
 # s = Scraper.new
 # p s.scrape("tokyustayresidence.com", "ebisu")
+# p s.scrape_base(Bing, "tokyustayresidence.com", "ebisu")
+# p s.scrape(Bing, "bmw.dk", "bmw")

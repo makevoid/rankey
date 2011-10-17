@@ -35,6 +35,12 @@ musicxmatch
 
 ### Features:
 
+### v2
+
+integrazione api adwords:
+
+- cpc chiave
+- suggerimento parole adwords
 
 ### TODO:
 
