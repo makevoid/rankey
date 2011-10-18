@@ -13,7 +13,7 @@ test:
   <<: *defaults
 
 travis:
-  database: rankey_test
+  database: rankey_travis
   username:
   <<: *defaults
 
