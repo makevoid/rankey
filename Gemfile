@@ -4,7 +4,7 @@ DM_VERSION    = '~> 1.2.0.rc1'
 # DM_VERSION    = '~> 1.1.0'
 
 
-group :development, :test, :production, :dm do
+group :development, :test, :production, :travis, :dm do
   gem 'mysql2'
   gem 'dm-core'        , DM_VERSION
   gem 'dm-mysql-adapter'     , DM_VERSION
@@ -23,7 +23,7 @@ group :dm_test do
   gem "nokogiri"
 end     
 
-group :development, :test, :production, :app do
+group :development, :test, :production, :travis, :app do
   gem 'activesupport',       :require => 'active_support'
   gem 'actionpack',          :require => 'action_pack'
   gem 'actionmailer',        :require => 'action_mailer'
@@ -71,9 +71,12 @@ group :development do
   gem 'capistrano'
 end
 
-group :development, :test do
+group :development, :test, :travis do
   gem "rspec-rails", "~> 2.6"
   gem "jasmine", group: [:development, :test]
+end
+
+group :development, :test do
   gem "spork", git: "https://github.com/timcharper/spork.git" # fix deprecation of Gem.latest_load_paths 
 end
 
