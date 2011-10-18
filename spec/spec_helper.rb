@@ -3,9 +3,11 @@
 
 def rspec_load
   # This file is copied to spec/ when you run 'rails generate rspec:install'
+  puts ">> spec ENV:"
+  puts ENV.inspect
   ENV["RAILS_ENV"] = "travis" if ENV["TRAVIS"]
   ENV["RAILS_ENV"] ||= 'test'
-  Bundler.require :test
+  Bundler.require ENV["RAILS_ENV"].to_sym
   require File.expand_path("../../config/environment", __FILE__)
 
   require 'rspec/rails'
