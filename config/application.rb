@@ -65,3 +65,7 @@ module Rankey
   end
 end
 
+puts "ENV LOADED:"
+puts Rails.env
+puts ""
+
