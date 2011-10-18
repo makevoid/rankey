@@ -1,5 +1,5 @@
 # require "spec_helper"
-path = File.expand_path "../", __FILE__
+path = File.expand_path "../../", __FILE__
 require "#{path}/spec_helper"
 
 describe User do

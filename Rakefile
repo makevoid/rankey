@@ -14,7 +14,7 @@ Rankey::Application.load_tasks
 
 
 
-DataMapper.setup(:default, 'mysql://localhost/rankey_development')
+
 # Dir.glob("#{path}/app/models/*.rb").map do |model|
 #   require model
 # end

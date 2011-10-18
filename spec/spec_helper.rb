@@ -1,5 +1,5 @@
 # require 'rubygems'
-require 'spork'
+# require 'spork'
 
 def rspec_load
   # This file is copied to spec/ when you run 'rails generate rspec:install'
@@ -43,14 +43,19 @@ def rspec_load
 end
 
 
-Spork.prefork do
+# Spork.prefork do
   rspec_load  
-end
+# end
 
-Spork.each_run do
+# Spork.each_run do
   # This code will be run each time you run your specs.
   
 
 
   DataMapper.auto_migrate!
-end
+# end
+
+
+# if ENV['TRAVIS']
+  # ...
+# env

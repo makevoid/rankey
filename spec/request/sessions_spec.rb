@@ -9,13 +9,13 @@ describe "Sessions", :type => :request do
     pass = "secret"
     User.create(username: user, password: pass)
     u = User.first
-    puts "good pass?: ", u.good_password?(pass)
-    puts "good pass?: ", u.good_password?(pass)
+    # puts "good pass?: ", u.good_password?(pass)
+    # puts "good pass?: ", u.good_password?(pass)
     post "/sessions.json", { username: user, password: pass, remember_me: true }
     resp = JSON.parse response.body
     resp.symbolize_keys!
-    puts resp.inspect
-    resp[:success].should == true
+    # puts resp.inspect
+    resp[:success].should == { "message" => "Logged in!" }
   end
   
 end

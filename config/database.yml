@@ -11,6 +11,12 @@ development:
 test:
   database: rankey_test
   <<: *defaults
+
+travis:
+  database: rankey_test
+  username:
+  <<: *defaults
+
 production:
   database: rankey_production
   password: secret

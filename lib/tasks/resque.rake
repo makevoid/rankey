@@ -1,5 +1,6 @@
 path = File.expand_path "../../../", __FILE__
 
+DataMapper.setup(:default, 'mysql://localhost/rankey_development')
 require 'resque/tasks'
 
 # rake resque:work QUEUE='*'
