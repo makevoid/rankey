@@ -7,7 +7,7 @@ class Site
   has n, :keys
   
   before :save do
-    puts "TODO: check if the name is in this format: 'abc.com'"
+    puts "TODO: validation: check if the name is in this format: 'abc.com'"
   end
   
   

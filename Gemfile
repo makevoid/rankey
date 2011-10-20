@@ -1,20 +1,22 @@
 source 'http://rubygems.org'
 
-DM_VERSION    = '~> 1.2.0.rc1'
-# DM_VERSION    = '~> 1.1.0'
+DM_VERSION    = '~> 1.3.0.beta'
+DM_VERSION2    = '~> 1.2.0.rc1'
 
+DATAMAPPER = "git://github.com/datamapper"
 
 group :development, :test, :production, :travis, :dm do
   gem 'mysql2'
-  gem 'dm-core'        , DM_VERSION
-  gem 'dm-mysql-adapter'     , DM_VERSION
-  
-  gem 'dm-migrations'        , DM_VERSION
-  gem 'dm-types'            , DM_VERSION#, git: "git://github.com/datamapper/dm-types.git"
-  gem 'dm-validations'       , DM_VERSION
+  gem 'dm-core'        , DM_VERSION, :git => "#{DATAMAPPER}/dm-core.git"
+  gem 'dm-mysql-adapter'     , DM_VERSION, :git => "#{DATAMAPPER}/dm-mysql-adapter.git"
+  gem 'dm-do-adapter'     , DM_VERSION, :git => "#{DATAMAPPER}/dm-do-adapter.git"
+    
+  gem 'dm-migrations'        , DM_VERSION, :git => "#{DATAMAPPER}/dm-migrations.git"
+  # gem 'dm-types'            , DM_VERSION#, git: "git://github.com/datamapper/dm-types.git"
+  gem 'dm-validations'       , DM_VERSION, :git => "#{DATAMAPPER}/dm-validations.git"
   #gem 'dm-constraints'      , DM_VERSION
-  gem 'dm-transactions'    , DM_VERSION
-  gem 'dm-aggregates'        , DM_VERSION
+  # gem 'dm-transactions'    , DM_VERSION
+  gem 'dm-aggregates'        , DM_VERSION, :git => "#{DATAMAPPER}/dm-aggregates.git"
   # gem 'dm-timestamps'        , DM_VERSION
   # gem 'dm-observer'          , DM_VERSION
 end
@@ -31,9 +33,9 @@ group :development, :test, :production, :travis, :app do
 
 
 
-  gem 'dm-rails', DM_VERSION, git: "https://github.com/datamapper/dm-rails.git"
+  gem 'dm-rails', DM_VERSION, git: "#{DATAMAPPER}/dm-rails.git"
 
-  gem 'dm-active_model', DM_VERSION, git: "git://github.com/datamapper/dm-active_model.git"
+  gem 'dm-active_model', DM_VERSION, git: "#{DATAMAPPER}/dm-active_model.git"
   
   gem 'tzinfo'
 
@@ -46,26 +48,29 @@ group :development, :test, :production, :travis, :app do
   gem "mechanize"
   gem "resque"
 
-  gem "url2png"
 
   gem "sorcery"
 
-  gem 'newrelic_rpm'
   gem "voidtools", git: "git://github.com/makevoid/voidtools"
-  gem "exception_notification", :git => "git://github.com/rails/exception_notification"
+  
+  
 
-  gem 'jquery-rails'
-  
-  # gem 'thin'
-  gem "unicorn"
-  
-  gem 'compass', :git => 'git://github.com/chriseppstein/compass.git'#, :branch => 'rails31'
 end
 
 
 
 
-group :development do
+group :development, :no_ci do
+  gem 'jquery-rails'
+
+  # gem 'thin'
+  gem "url2png"
+  gem 'newrelic_rpm'
+  gem "exception_notification", :git => "git://github.com/rails/exception_notification"
+  gem "unicorn"
+
+  gem 'compass', :git => 'git://github.com/chriseppstein/compass.git'#, :branch => 'rails31'
+
   gem "pry"
   gem "guard"
   gem 'capistrano'
@@ -73,14 +78,14 @@ end
 
 group :development, :test, :travis do
   gem "rspec-rails", "~> 2.6"
-  gem "jasmine", group: [:development, :test]
+  # gem "jasmine"
 end
 
-group :development, :test do
-  gem "spork", git: "https://github.com/timcharper/spork.git" # fix deprecation of Gem.latest_load_paths 
+group :development, :test, :no_ci do
+  gem "spork", git: "git://github.com/timcharper/spork.git" # fix deprecation of Gem.latest_load_paths 
 end
 
-group :test do
+group :test, :no_ci do
   gem "factory_girl_rails"
   gem "capybara"
   gem "fakeweb"
@@ -89,7 +94,7 @@ end
 
 # Gems used only for assets and not required
 # in production environments by default.
-group :assets do
+group :assets, :no_ci do
   gem 'sass-rails', "  ~> 3.1.0"
   gem 'coffee-rails', "~> 3.1.0"#, git: "git://github.com/rails/coffee-rails.git"
   gem 'uglifier'

@@ -20,10 +20,10 @@ class SitesView extends Backbone.View
     content = view.render().el
     $(content).addClass "odd" if @odd
     @odd = !@odd
-    Loading.loaded()
     this.$(".sitesList").append content
     
   addAll: ->    
     Sites.each (site) =>
       this.addOne(site)
+    Loading.loaded()
   

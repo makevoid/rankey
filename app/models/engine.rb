@@ -3,7 +3,7 @@ class Engine
   ENGINES = [:google, :yahoo, :bing]
   
   def self.all
-    ENGINES.map{ |e| e.name.constantize }
+    ENGINES.map{ |e| eval(e.to_s.capitalize) }
   end
   
   

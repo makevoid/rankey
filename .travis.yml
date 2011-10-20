@@ -1,5 +1,5 @@
 rvm: 1.9.2
 before_script: "bundle exec rake travis:db:create"
-script: "bundle exec rspec spec"
+bundler_args: --without no_ci
 env:
   - RAILS_ENV=travis

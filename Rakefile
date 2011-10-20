@@ -10,9 +10,19 @@ path = File.expand_path "../", __FILE__
 
 
 require File.expand_path('../config/application', __FILE__)
-Rankey::Application.load_tasks
+# Rankey::Application.load_tasks
 
 
+require 'rspec/core/rake_task'
+
+desc "Run all specs"
+RSpec::Core::RakeTask.new(:spec) do |t|
+  t.rspec_opts = ["-b", "-c", "-fd"]
+  t.pattern = 'spec/**/*_spec.rb'
+end
+
+
+task :default => :spec
 
 
 # Dir.glob("#{path}/app/models/*.rb").map do |model|

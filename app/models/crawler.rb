@@ -1,11 +1,11 @@
 class Crawler
   
-  def initialize
-    @scraper = Scraper.new
+  def initialize(opts={})
+    @scraper = Scraper.new opts
   end
   
-  def self.crawl!
-    new.crawl
+  def self.crawl!(opts={})
+    new(opts).crawl
   end
     
   def crawl
@@ -35,3 +35,35 @@ class Crawler
   end
   
 end
+
+## debug
+# 
+# require 'dm-core'
+# require 'dm-aggregates'
+# path = File.expand_path "../../../", __FILE__
+# 
+# Dir.glob("#{path}/app/models/*.rb").map do |model|
+#   require model
+# end
+# 
+# DataMapper.setup(:default, 'mysql://localhost/rankey_development')
+# 
+# sites = [
+#   { 
+#     name: "makevoid.com", 
+#     keys: ["makevoid", ["ruby on rails", "ruby", "rails"], ["web apps", "apps"], "firenze"]      
+#   }
+# ]
+# 
+# sites.each do |site|
+#   site_obj = Site.create name: site[:name]
+#   keys = Keys.new site[:keys]
+#   
+#   keys.all.each do |key_name|
+#     site_obj.keys.create name: key_name
+#   end
+# end
+# 
+# 
+# c = Crawler.new fixture: true
+# c.crawl

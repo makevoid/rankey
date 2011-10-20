@@ -67,20 +67,16 @@ user.save
 
 sites.each do |site|
   site_obj = Site.create name: site[:name]
-  
-  # puts site[:name]#, " -> ", site[:keys].inspect
   keys = Keys.new site[:keys]
-  # puts keys.all.inspect, "\n"
   
   keys.all.each do |key_name|
     key = site_obj.keys.create name: key_name
     
     Position.history_days.each do |day|
-      key.positions.create pos: rand(99)+1, engine: Google, created_on: day
-      key.positions.create pos: rand(99)+1, engine: Yahoo, created_on: day
-      key.positions.create pos: rand(99)+1, engine: Bing, created_on: day
+      Engine.all.each do |engine|
+        key.positions.create pos: rand(99)+1, engine: engine, created_on: day
+      end
     end
-    
   end
 end
 
