@@ -60,8 +60,8 @@ namespace :deploy do
     run "touch #{current_path}/tmp/restart.txt"
   end
   
-  desc "compile_assets assets"
-  task :restart, :roles => :app do
+  desc "Compile assets"
+  task :compile_assets, :roles => :app do
     run "cd #{current_path}; rake assets:precompile"
   end
   

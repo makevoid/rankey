@@ -16,7 +16,7 @@ class Key extends Backbone.Model
       position = if pos
         pos
       else
-        { engine: engine, pos: 99 }
+        { engine: engine, pos: "?" }
         
       positions.push new Position(position)
       
