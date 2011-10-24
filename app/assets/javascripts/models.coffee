@@ -7,9 +7,21 @@ class User extends Backbone.Model
 class Key extends Backbone.Model  
   initialize: ->
     positions = []
-    for pos in @attributes.positions
-      positions.push new Position(pos)
-    @positions = positions
+    engines = ["google", "yahoo", "bing"]
+    
+    for engine in engines
+      pos = _(@attributes.positions).find (pos) ->
+        pos.engine == engine
+        
+      position = if pos
+        pos
+      else
+        { engine: engine, pos: 99 }
+        
+      positions.push new Position(position)
+      
+    # console.log positions
+    @attributes.positions = positions
   
   pos: (engine) -> # TODO: needed?, still not used anywhere
     _.detect(@positions, (pos) ->

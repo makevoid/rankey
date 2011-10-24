@@ -14,7 +14,7 @@ class Site
   def keys_pos_count
     Position.today.all(key: keys, fields: [:pos]).map do |p| 
       p.pos
-    end.select{ |p| p <= Rankey::POS_OK }.size
+    end.select{ |p| !p.nil? && p <= Rankey::POS_OK }.size
   end
   
   def keys_count

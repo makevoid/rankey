@@ -17,4 +17,8 @@
     %td \#{name}
     :for pos in positions
       %td
-        %div= pos.pos
+        %div
+          :if pos.attributes.pos != undefined
+            = pos.attributes.pos
+          :if pos.attributes.pos == undefined
+            ?

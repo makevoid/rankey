@@ -25,6 +25,10 @@ exit if env == "test"
 
 sites = [
   { 
+    name: "gystyle.com", 
+    keys: [["shopping", "outlet"], "online", ["make up", "prodotti", "abbigliamento", "vestiti", "abiti", "vino",  "giacche", "moda", "moda accessori", "borse", "sedie", "cashemere", "gastronomia", "pasta", "ballerine", "cappotti", "cinture"], ["italy", "made in italy"]]
+  },
+  { 
     name: "makevoid.com", 
     keys: ["makevoid", ["ruby on rails", "ruby", "rails"], ["web apps", "apps"], "firenze"]      
   },

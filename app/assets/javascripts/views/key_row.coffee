@@ -13,8 +13,8 @@ class KeyRow extends Backbone.View
     
   colorize: (only_pos=false, darkAmount=120) -> # TODO: refactor  
     idx = 0
-    for td in $(this.el).find("td div")
-      pos = this.model.positions[idx].attributes.pos
+    for td in $(@el).find("td div")
+      pos = @model.attributes.positions[idx].attributes.pos
             
       pos_tresh = 100  
       val = if pos > pos_tresh

@@ -30,9 +30,12 @@ class Crawler
   end
   
   def scrape_key(domain, key)
+    
     Engine.all.each do |engine|
-      scrape_base engine, domain, key
-    end
+      exists = Position.count(created_on: Date.today, key: key, engine_id: engine.id) >= 1
+      # exists = false
+      scrape_base engine, domain, key unless exists
+    end 
   end
   
   def scrape_base(engine, domain, key)
@@ -70,6 +73,8 @@ end
 # DataMapper.finalize
 # DataMapper.setup(:default, 'mysql://localhost/rankey_development')
 # 
+# DataMapper.auto_migrate!
+#
 # sites = [
 #   { 
 #     name: "makevoid.com", 

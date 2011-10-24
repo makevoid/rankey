@@ -9,6 +9,8 @@ require_relative "bing"
 
 class Scraper
   
+  SLEEP = 2
+  
   def initialize(options={fixture: false})
     @options = options
     require 'mechanize'
@@ -35,8 +37,8 @@ class Scraper
     nil
   end
   
-  def logger
-    File.open("#{APP_PATH}/log/scraper.log", "a")
+  def logger(&block)
+    File.open("#{APP_PATH}/log/scraper.log", "a"){ |f| block.call f }
   end  
   
   private
@@ -51,16 +53,19 @@ class Scraper
       begin
         times += 1
         page = @agent.get url
-        sleep 0.6
+        sleep SLEEP if SLEEP
         page
       rescue Mechanize::ResponseCodeError => e
         retry if times < 3
         logger do |log| 
           get_error = lambda{ |url, e| "Error: Scraper getting url: #{url} raising #{e.class}: #{e.message} - Scraper.get" }
-          log.puts get_error.call(url, e)
+          err = get_error.call(url, e)
+          log.puts err
+          puts err
           
-          raise EngineError if e.response_code.to_i == 900
-        end
+          raise EngineError if e.response_code.to_i == 999
+        end  
+        nil
       end
       
       
