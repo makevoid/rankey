@@ -60,7 +60,7 @@ end
 
 
 
-group :development, :no_ci do
+group :development, :no_ci, :production do
   gem 'jquery-rails'
 
   # gem 'thin'
