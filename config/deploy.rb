@@ -50,6 +50,7 @@ after :deploy, "deploy:create_database_yml"
 
 after :deploy, "deploy:cleanup"
 after :deploy, "chmod:entire"
+after :deploy, "deploy:compile_assets"
 
 
 namespace :deploy do
@@ -58,7 +59,12 @@ namespace :deploy do
   task :restart, :roles => :app do
     run "touch #{current_path}/tmp/restart.txt"
   end
-
+  
+  desc "compile_assets assets"
+  task :restart, :roles => :app do
+    run "cd #{current_path}; rake assets:precompile"
+  end
+  
   desc "Setup newrelic license key"
   task :newrelic_secret do
     newrelic_key = File.read('/Users/makevoid/.newrelic').strip
