@@ -13,7 +13,7 @@ class Bing < Engine
   end
   
   def self.base_url(query)
-    "http://www.bing.com/search?q=#{query}&n=#{RESULTS_NUM}"
+    "http://#{COUNTRY}.bing.com/search?q=#{query}&n=#{RESULTS_NUM}"
   end
   
   def self.page_results(page)

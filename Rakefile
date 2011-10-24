@@ -10,9 +10,9 @@ path = File.expand_path "../", __FILE__
 
 
 require File.expand_path('../config/application', __FILE__)
-if ENV['TRAVIS']
+# if ENV['TRAVIS']
   Rankey::Application.load_tasks
-end
+# end
 
 require 'rspec/core/rake_task'
 

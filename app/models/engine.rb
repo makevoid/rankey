@@ -1,5 +1,7 @@
 class Engine
   
+  COUNTRY = "it"
+  # COUNTRY = "us"
   ENGINES = [:google, :yahoo, :bing]
   
   def self.all

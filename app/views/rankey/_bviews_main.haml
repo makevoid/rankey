@@ -1,0 +1,19 @@
+
+%script{ type: "text/template", id: "rankeyView" }
+  :plain
+    %div
+      .msg
+      #content
+  
+%script{ type: "text/template", id: "navView" }
+  :plain
+    %div
+      %nav
+        %ul
+          %li
+            %a{ href: "javascript:void(0)", data-url: "sites" }.current Sites
+          %li
+            %a{ href: "javascript:void(0)", data-url: "not_found"  } blank
+
+
+

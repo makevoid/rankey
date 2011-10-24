@@ -4,12 +4,13 @@ require_relative "engine"
 # require "#{path}/engine"
 
 class Google < Engine
+  
   def self.id
     1
   end
   
   def self.base_url(query)
-    "http://google.com/search?num=100&q=#{query}"
+    "http://google.com/search?num=100&hl=#{COUNTRY}&q=#{query}"
   end
   
   def self.page_results(page)

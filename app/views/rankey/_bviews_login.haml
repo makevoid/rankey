@@ -1,0 +1,16 @@
+%script{ type: "text/template", id: "loggedView" }
+  :plain
+    %div
+      .userDetails
+      %a.btn.logout{ href: "javascript:void(0)", data-url: "logout" } Logout
+
+
+
+%script{ type: "text/template", id: "loginView" }
+  :plain
+    %div
+      %h2 Login
+      %form.login{ method: "post", url: "/sessions" }
+        %input{ type: "text", name: "username" }
+        %input{ type: "password", name: "password" }
+        %input{ type: "submit", value: "Login" }

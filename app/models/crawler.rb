@@ -1,3 +1,9 @@
+class EngineError < RuntimeError
+  def message
+    "Engine error, the engine doesn't accept more requests"
+  end
+end
+
 class Crawler
   
   def initialize(opts={})
@@ -10,17 +16,16 @@ class Crawler
     
   def crawl
     Site.all.each do |site|
-      scrape(site)
+      scrape_site(site)
     end
     
     true # TODO: consider returning a crawl status
   end
   
-  def scrape(site, options={debug: false})
-    domain = site.name
+  def scrape_site(site, options={debug: false})
     limit = options[:debug] ? 1 : -1
-    domain.keys[0..limit].each do |key|
-      scrape_key domain, key
+    site.keys[0..limit].each do |key|
+      scrape_key site.name, key
     end
   end
   
@@ -31,21 +36,38 @@ class Crawler
   end
   
   def scrape_base(engine, domain, key)
-    @scraper.scrape(engine, domain.name, key.name)
+    result = begin 
+      @scraper.scrape(engine, domain, key.name)
+    rescue EngineError 
+      @scraper.logger do |log|
+        log.puts "Error: Engine Error on '#{engine}'"
+      end
+      :fail
+    end
+    
+    puts "#{result}\t #{key.name} - #{engine} - #{domain}"
+    save_result result, key, engine unless result == :fail
+  end
+  
+  def save_result(result, key, engine)
+    key.positions.create pos: result, engine: engine
   end
   
 end
 
 ## debug
 # 
-# require 'dm-core'
-# require 'dm-aggregates'
+
+# require 'bundler/setup'
+# Bundler.require :dm
+# 
 # path = File.expand_path "../../../", __FILE__
 # 
 # Dir.glob("#{path}/app/models/*.rb").map do |model|
 #   require model
 # end
 # 
+# DataMapper.finalize
 # DataMapper.setup(:default, 'mysql://localhost/rankey_development')
 # 
 # sites = [
@@ -64,6 +86,7 @@ end
 #   end
 # end
 # 
+# Position.today.each{ |p| p.destroy }
 # 
-# c = Crawler.new fixture: true
+# c = Crawler.new# fixture: true
 # c.crawl

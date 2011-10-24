@@ -7,7 +7,7 @@ class Yahoo < Engine
   
   def self.base_url(query)
     ###
-    "http://it.search.yahoo.com/search?p=#{query}&n=100"
+    "http://#{COUNTRY}.search.yahoo.com/search?p=#{query}&n=100"
   end
   
   def self.page_results(page)

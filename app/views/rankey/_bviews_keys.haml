@@ -1,0 +1,20 @@
+%script{ type: "text/template", id: "keysListView" }<
+  :plain
+    %div
+      %h3 Keywords
+      %table{ cellspacing: 0 }
+        %thead
+          %tr
+            %th name
+            %th google
+            %th yahoo
+            %th bing
+        %tbody.keysList
+    
+
+%script{ type: "text/template", id: "keyRow" }<
+  :plain
+    %td \#{name}
+    :for pos in positions
+      %td
+        %div= pos.pos

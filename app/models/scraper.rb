@@ -1,5 +1,5 @@
 path = File.expand_path "../../../", __FILE__
-SCRAPER_PATH = path
+APP_PATH = path
 
 require 'nokogiri'
 require "#{path}/lib/nokogiri_exts"
@@ -23,6 +23,10 @@ class Scraper
     # engine.page_results(page).inspect
   
     engine.page_results(page).each_with_index do |res, idx|
+      if res.nil?
+        puts "got nil result"
+        puts page.inspect
+      end
       dom = res.inner_link_text
       # puts dom
       # puts domain
@@ -31,22 +35,45 @@ class Scraper
     nil
   end
   
+  def logger
+    File.open("#{APP_PATH}/log/scraper.log", "a")
+  end  
   
   private
   
   def get(engine, key)
     unless @options[:fixture]
       engine.add_cookies @agent if engine == Bing
-      @agent.get engine.base_url(key)
+      
+      url = engine.base_url(key)
+      
+      times = 0
+      begin
+        times += 1
+        page = @agent.get url
+        sleep 0.6
+        page
+      rescue Mechanize::ResponseCodeError => e
+        retry if times < 3
+        logger do |log| 
+          get_error = lambda{ |url, e| "Error: Scraper getting url: #{url} raising #{e.class}: #{e.message} - Scraper.get" }
+          log.puts get_error.call(url, e)
+          
+          raise EngineError if e.response_code.to_i == 900
+        end
+      end
+      
+      
       # @agent.get Google.base_url(key)
     else
       get_fixture engine, key
     end
   end
   
+  
   def get_fixture(engine, key)
     key = key.downcase.gsub(/\s+/, '_')
-    Nokogiri::HTML File.read("#{SCRAPER_PATH}/spec/fixtures/#{engine.engine_name}_#{key}.html")
+    Nokogiri::HTML File.read("#{APP_PATH}/spec/fixtures/#{engine.engine_name}_#{key}.html")
   end
 
 end
