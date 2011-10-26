@@ -9,7 +9,8 @@ require_relative "bing"
 
 class Scraper
   
-  SLEEP = 2
+  # SLEEP = 2
+  SLEEP = 20
   
   def initialize(options={fixture: false})
     @options = options
@@ -55,10 +56,26 @@ class Scraper
         page = @agent.get url
         sleep SLEEP if SLEEP
         page
+        
       rescue Mechanize::ResponseCodeError => e
-        retry if times < 3
+        if times < 4
+          @agent = Mechanize.new
+          @agent.user_agent = 'Mac Firefox'
+          
+          sleep times*2
+          puts "got: #{e.message} - retrying: #{times}* time"
+          puts "#{e.page.body}"
+          
+          if times < 3 #spawn new agent
+            @agent = Mechanize.new
+            @agent.user_agent = 'Mac Safari'
+          end
+          
+          retry 
+        end
+        
         logger do |log| 
-          get_error = lambda{ |url, e| "Error: Scraper getting url: #{url} raising #{e.class}: #{e.message} - Scraper.get" }
+          get_error = lambda{ |urlz, er| "Error: Scraper getting url: #{urlz} raising #{er.class}: #{er.message} - Scraper.get" }
           err = get_error.call(url, e)
           log.puts err
           puts err

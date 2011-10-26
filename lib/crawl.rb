@@ -1,3 +1,5 @@
+env = ARGV[0] || "development"
+
 require 'bundler/setup'
 Bundler.require :dm
 
@@ -8,7 +10,13 @@ Dir.glob("#{path}/app/models/*.rb").map do |model|
 end
 
 DataMapper.finalize
-DataMapper.setup(:default, 'mysql://localhost/rankey_development')
+if env == "production"
+  conf = YAML::load File.read("#{path}/config/database.yml")
+  pass = conf["production"]["password"]
+  pass = "root:#{pass}@"
+end
+
+DataMapper.setup(:default, "mysql://#{pass}localhost/rankey_#{env}")
 
 # Position.today.each{ |p| p.destroy }
 
