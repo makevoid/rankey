@@ -17,8 +17,9 @@
     %td \#{name}
     :for pos in positions
       %td
-        %div
-          :if pos.attributes.pos != undefined
+        :if pos.attributes.pos != undefined
+          %div.pos{ data-link: pos.attributes.link }
             = pos.attributes.pos
-          :if pos.attributes.pos == undefined
+        :if pos.attributes.pos == undefined
+          %div  
             100+

@@ -67,7 +67,7 @@ namespace :deploy do
   
   desc "Setup newrelic license key"
   task :newrelic_secret do
-    newrelic_key = File.read('/Users/makevoid/.newrelic').strip
+    newrelic_key = File.read('/Users/makevoid/Dropbox/.newrelic').strip
     run "ruby -e \"path = '#{current_path}/config'; db_yaml = File.read(path+'/newrelic.yml'); File.open(path+'/newrelic.yml', 'w'){ |f| f.write db_yaml.gsub(/LICENSE_KEY/, '#{newrelic_key}') }\""
   end
 

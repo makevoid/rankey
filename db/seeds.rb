@@ -51,7 +51,7 @@ sites = [
   { 
     name: "pietroporcinai.com",
     alt: ["pietroporcinai.it"],
-    keys: [ ["torrent", "thorrents"], ["tpb", "piratebay"], "italia" ]
+    keys: [ ["pietro porcinai", "porcinai"], ["architetto", "architettura"], "giardini", ["paesaggio", "paesaggista"] ]
   },
   { 
     name: "mangapad.org",

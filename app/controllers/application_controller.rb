@@ -33,6 +33,12 @@ class ApplicationController < ActionController::Base
     !request.formats.include? "application/json"
   end
   
+  def request_html?
+    # puts request.formats.inspect
+    # puts request.formats.include? "text/html"
+    request.formats.include? "text/html"
+  end
+  
   def backbone_default_if_html
     render template: "rankey/show", layout: 'application' if request_not_json?
   end

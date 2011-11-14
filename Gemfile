@@ -1,7 +1,7 @@
-source 'http://rubygems.org'
+source :rubygems
 
 DM_VERSION    = '~> 1.3.0.beta'
-DM_VERSION2    = '~> 1.2.0.rc1'
+DM_VERSION2    = '~> 1.1.1'
 
 DATAMAPPER = "git://github.com/datamapper"
 
@@ -13,7 +13,7 @@ group :development, :test, :production, :travis, :dm do
     
   gem 'dm-migrations'        , DM_VERSION, :git => "#{DATAMAPPER}/dm-migrations.git"
   # gem 'dm-types'            , DM_VERSION#, git: "git://github.com/datamapper/dm-types.git"
-  gem 'dm-validations'       , DM_VERSION, :git => "#{DATAMAPPER}/dm-validations.git"
+  gem 'dm-validations'       , DM_VERSION2, :git => "#{DATAMAPPER}/dm-validations.git"
   #gem 'dm-constraints'      , DM_VERSION
   # gem 'dm-transactions'    , DM_VERSION
   gem 'dm-aggregates'        , DM_VERSION, :git => "#{DATAMAPPER}/dm-aggregates.git"
@@ -82,7 +82,7 @@ group :development, :test, :travis do
 end
 
 group :development, :test, :no_ci do
-  gem "spork", git: "git://github.com/timcharper/spork.git" # fix deprecation of Gem.latest_load_paths 
+  # gem "spork", git: "git://github.com/timcharper/spork.git" # fix deprecation of Gem.latest_load_paths 
 end
 
 group :test, :no_ci do
@@ -102,6 +102,9 @@ group :assets, :no_ci do
   
 end
 
+
+# ???
+# gem "bson", "~> 1.4.1"
 
 # web servers
 # gem 'unicorn'

@@ -3,6 +3,10 @@
 class KeyRow extends Backbone.View
   tagName:  "tr"
   
+  events: {
+    "click div.pos": "open_search_engine"
+  }
+  
   initialize: ->
     # @pos_text = "good"
   
@@ -10,6 +14,11 @@ class KeyRow extends Backbone.View
     $(this.el).html Utils.haml("#keyRow", this.model) 
     this.colorize()
     this
+    
+  open_search_engine: (evt) ->
+    link = $(evt.target).data("link")
+    console.log "opening: ", link
+    window.location = link
     
   colorize: (only_pos=false, darkAmount=120) -> # TODO: refactor  
     idx = 0

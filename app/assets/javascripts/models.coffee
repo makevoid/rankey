@@ -17,7 +17,7 @@ class Key extends Backbone.Model
         pos
       else
         { engine: engine, pos: "?" }
-        
+      position.key = this
       positions.push new Position(position)
       
     # console.log positions
@@ -31,6 +31,20 @@ class Key extends Backbone.Model
 class Position extends Backbone.Model
   initialize: ->
     @engine = new Engine({ name: @attributes.engine })    
+    @attributes.link = this.engine_link()
+    
+  engine_link: ->
+    key = @attributes.key.attributes.name
+    # console.log "pos: ", @attributes.pos
+    country = "it"
+    start = Math.floor(@attributes.pos / 10)*10
+    switch @attributes.engine
+      when "google"
+        "http://google.com/search?num=10&hl=#{country}&q=#{key}&start=#{start}"
+      when "yahoo"
+        "http://#{country}.search.yahoo.com/search?p=#{key}&n=10&b=#{start+1}"
+      when "bing"       
+        "http://#{country}.bing.com/search?q=#{key}&n=10&first=#{start+1}"
 
 class Engine extends Backbone.Model
   icon: ->

@@ -19,8 +19,9 @@
 
 %script{ type: "text/template", id: "siteRow" }<
   :plain
-    %td 
+    %td.ico
       %img.favicon{ src: favicon }
+    %td 
       \#{name}
     %td= keys_pos_count
     %td= keys_count
@@ -35,7 +36,8 @@
       %table{ cellspacing: 0 }
         %thead
           %tr
-            %th name
+            %th 
+            %th site
             %th positioneds
             %th totals
         %tbody.sitesList

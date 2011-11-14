@@ -101,6 +101,7 @@ body
 
 #container
   margin-top: 10px
+  min-width: 300px
 
 a
   // link-colors($normal, $hover, $active, $visited, $focus)
@@ -261,7 +262,10 @@ a:hover .sshot
   height: 250px
   width: 400px
   margin-left: 20px
-  
+
+td.ico
+  width: 20px
+
 .favicon
   width: 22px
   position: relative
@@ -371,5 +375,7 @@ tbody.sitesList tr, tbody.keysList tr
     +border-radius-bottom($default-radius)    
 
 @media (max-width:480px)
+  #search input
+    width: 150px
       
 @media (orientation: portrait) 
