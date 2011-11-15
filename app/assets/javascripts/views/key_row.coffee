@@ -18,7 +18,10 @@ class KeyRow extends Backbone.View
   open_search_engine: (evt) ->
     link = $(evt.target).data("link")
     # console.log "opening: ", link
-    window.location = link
+    unless navigator.userAgent.match /Chrome/
+      window.location = link
+    else # chrome fix
+      window.open link, "_engine"
     
   colorize: (only_pos=false, darkAmount=120) -> # TODO: refactor  
     idx = 0
