@@ -17,7 +17,7 @@ class KeyRow extends Backbone.View
     
   open_search_engine: (evt) ->
     link = $(evt.target).data("link")
-    console.log "opening: ", link
+    # console.log "opening: ", link
     window.location = link
     
   colorize: (only_pos=false, darkAmount=120) -> # TODO: refactor  
