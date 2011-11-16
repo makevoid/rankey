@@ -3,9 +3,10 @@ class SiteView extends Backbone.View
   el: "#content"
   
   initialize: ->    
+    # console.log "what?"
     _.bindAll(this, 'render')
     this.model.bind("change", this.render)
-    Sites.bind("all",   this.render, this)
+    Sites.bind "all", this.render, this
 
     Keys = KeysBase.extend({
       url: "/sites/#{@model.attributes.id}/keys"
@@ -19,7 +20,8 @@ class SiteView extends Backbone.View
     # Sites.bind("add",   this.addOne, this)
     # Sites.bind("reset", this.addAll, this)
   
-  render: ->
+  render: ->  
+    Sites.unbind "all", this.render
     content = Utils.haml "#siteView", @model
     $(@el).html content 
     

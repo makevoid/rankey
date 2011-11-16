@@ -29,17 +29,18 @@ class RankeyView extends Backbone.View
 
   sites: ->
     @sitesView = new SitesView()
+    Sites.fetch()
     @sitesView.render()
     Loading.load()
-    Sites.fetch()
 
-
+  new_site: ->
+    newSiteView = new NewSiteView()
+    newSiteView.render()
+    
   site: (site_id) ->  
     site = new Site({ id: site_id })
     @siteView = new SiteView( model: site )
-    Loading.load()
-    # site.fetch(site_id)
     sites = new SitesList([site])
-    
     site.fetch()
+    Loading.load()
     

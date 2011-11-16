@@ -5,6 +5,7 @@ class RankeyRouter extends Backbone.Router
     '': "sites",
     'login': "login",
     'logout': "logout",
+    'sites/new': 'new_site',
     'sites': 'sites',
     'sites/:site_id': 'site',
     'logout': 'logout',
@@ -15,7 +16,6 @@ class RankeyRouter extends Backbone.Router
     @cur_user = new User()
     g.cur_user = @cur_user
     @main_view = new RankeyView() 
-    this.sites()
     
   sites: ->
     return this.login() unless @cur_user.logged
@@ -30,8 +30,11 @@ class RankeyRouter extends Backbone.Router
     g.cur_user.set(session: null, name: null, email: null, logged: false)
     Rankey.navigate "login", true
     # ...
-
-  site: (site_id) ->
+                             
+  new_site: (site_id) ->     
+    @main_view.new_site()
+    
+  site: (site_id) ->       
     @main_view.site(site_id)
 
   blank: ->

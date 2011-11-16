@@ -1,13 +1,16 @@
 Rankey::Application.routes.draw do
+
+  backbone = 'rankey#show'
   
+  get "/sites/new", to: backbone
   get "/sites",                       to: "sites#index"
+  
   get "/sites/:site_id",              to: "sites#show"
   get "/sites/:site_id/image",        to: "sites#image"
   get "/sites/:site_id/keys",         to: "keys#index"
   get "/sites/:site_id/keys/history", to: "keys#history"
   get "/keys/:key_id/positions",      to: "positions#index"
   
-  backbone = 'rankey#show'
   
   root to: backbone
   get "/not_found", to: backbone
