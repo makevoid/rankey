@@ -83,6 +83,6 @@ Utils.haml_plain = (selector, object) ->
   
 # automations to speed up development, comment them in production
   
-setTimeout ->
-  Rankey.main_view.siteView.keysView.edit_keys()
-, 1000
+# setTimeout ->
+#   Rankey.main_view.siteView.keysView.edit_keys()
+# , 1000
