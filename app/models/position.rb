@@ -18,7 +18,7 @@ class Position
   end
   
   def self.google
-    all(engine_id: Google.id)
+    all(id_engine: Google.id)
   end
   
   def self.history

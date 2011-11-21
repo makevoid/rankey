@@ -36,7 +36,7 @@ class Crawler
     
     Engine.all.each do |engine|
       next if SKIP_YAHOO && engine == Yahoo 
-      exists = Position.count(created_on: Date.today, key: key, engine_id: engine.id) >= 1
+      exists = Position.count(created_on: Date.today, key: key, id_engine: engine.id) >= 1
       # exists = false
       scrape_base engine, domain, key unless exists
     end 

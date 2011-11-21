@@ -26,10 +26,12 @@ class KeysListView extends Backbone.View
   
   update_keys: ->
     # console.log @new_keys
+    this.elf(".spinner_img").animate({opacity: 1}, 1000)
     data = { keys: JSON.stringify @new_keys }
     req = $.ajax { url: "/sites/#{@site_id}/keys_src.json", type: "put", data: data }
-    req.done (data) ->
+    req.done (data) =>
       console.log data
+      this.elf(".spinner_img").animate({opacity: 0}, 500)   
       
   
   edit_keys: ->  
