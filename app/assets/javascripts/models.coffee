@@ -51,6 +51,7 @@ class Engine extends Backbone.Model
     "/images/engines/#{@attributes.name}.png"
     
 class Site extends Backbone.Model
+  
   initialize: ->
     this.bind "change", this.debug
     @attributes.favicon = "http://#{@attributes.name}/favicon.ico"

@@ -14,7 +14,7 @@ group :development, :test, :production, :travis, :dm do
   gem 'dm-migrations'        , DM_VERSION, :git => "#{DATAMAPPER}/dm-migrations.git"
   # gem 'dm-types'            , DM_VERSION#, git: "git://github.com/datamapper/dm-types.git"
   gem 'dm-validations'       , DM_VERSION2, :git => "#{DATAMAPPER}/dm-validations.git"
-  #gem 'dm-constraints'      , DM_VERSION
+  gem 'dm-constraints'      , DM_VERSION, :git => "#{DATAMAPPER}/dm-constraints.git"
   # gem 'dm-transactions'    , DM_VERSION
   gem 'dm-aggregates'        , DM_VERSION, :git => "#{DATAMAPPER}/dm-aggregates.git"
   # gem 'dm-timestamps'        , DM_VERSION

@@ -8,9 +8,13 @@
 
 %script{ type: "text/template", id: "loginView" }
   :plain
-    %div
+    .page
       %h2 Login
-      %form.login{ method: "post", url: "/sessions" }
-        %input{ type: "text", name: "username" }
-        %input{ type: "password", name: "password" }
-        %input{ type: "submit", value: "Login" }
+      .cont
+        %form.login{ method: "post" }
+          username:
+          %input{ type: "text", name: "username" }
+          password:
+          %input{ type: "password", name: "password" }
+          %input{ type: "submit", value: "Login" }
+      .foot

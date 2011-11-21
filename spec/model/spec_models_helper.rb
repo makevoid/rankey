@@ -12,4 +12,6 @@ Dir.glob("#{path}/app/models/*.rb").map do |model|
   require model
 end
 
+DataMapper::Logger.new($stdout, :debug)
+
 DataMapper.auto_migrate!

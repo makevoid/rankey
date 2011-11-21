@@ -1,21 +1,50 @@
+%script{ type: "text/template", id: "key_srcView" }<
+  :plain
+    %input{ name: "keys_site[]", class: klass, data-site: site, data-level: level, type: "text", placeholder: "..." }
+    
+
+%script{ type: "text/template", id: "keyslist_srcView" }<
+  :plain
+    .keys_list{ data-list: list }
+      .keys
+      -#%a.btn.add Add    
+      .clear
+      
+%script{ type: "text/template", id: "keys_srcView" }<
+  :plain
+    %div
+      .keys_lists
+      -#%a.btn.add Add   
+      .save 
+        %a.btn.add Save
+      
+      %h4 
+        %span.keys_num 0
+        keywords
+      .combinations
+        Add some more...
+      
 %script{ type: "text/template", id: "siteView" }<
   :plain
-    .site
-      %h2= name
-      .cont
-        %a{ href: link, target: "_blank" } 
-          %img.sshot{ src: image }
-        .siteChart
-        #tableBtns
-          .pos 
-            = keys_pos_count
-             positioneds 
-          .totals
-            = keys_count
-             totals
+    %div
+      .nav_right
+        %a.btn.del delete
+      .site
+        %h2= name
+        .cont
+          %a{ href: link, target: "_blank" } 
+            %img.sshot{ src: image }
+          .siteChart
+          #tableBtns
+            .pos 
+              = keys_pos_count
+               positioneds 
+            .totals
+              = keys_count
+               totals
                           
-        .keysListView
-      .foot &nbsp;    
+          .keysListView
+        .foot &nbsp;    
 
 %script{ type: "text/template", id: "siteRow" }<
   :plain
@@ -25,17 +54,31 @@
       \#{name}
     %td= keys_pos_count
     %td= keys_count
+
     
 %script{ type: "text/template", id: "newSiteView" }<
   :plain  
-    %p work in progres..
+    .page
+      %h2 Add a Site
+      .cont
+        %form{ method: "post", url: "/sites" }
+          Name 
+          %span (es: rankey.it)
+          %input{ name: "name", type: "text" }
+      
+          %input{ type: "submit", value: "Add" }
+      .foot
 
 %script{ type: "text/template", id: "sitesView" }<
   :plain
     %div
-      #search
-        %input{ name: "key", type: "search" }
-        %img.icon{ src: "/images/icons/search.png" }
+      .nav_right
+        %a#new_site_btn.btn.add{ href: "javascript:void(0)", data-url: "sites/new"  } New Site
+        
+        %span search:
+        #search
+          %input{ name: "key", type: "search" }
+          %img.icon{ src: "/images/icons/search.png" }
       .clear
       %table{ cellspacing: 0 }
         %thead

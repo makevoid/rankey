@@ -43,7 +43,13 @@ class ApplicationController < ActionController::Base
     render template: "rankey/show", layout: 'application' if request_not_json?
   end
   
+  # errors
+  
   def not_found(thing)
     { error: { type: "not_found", object: thing, message: "#{thing.to_s.capitalize} not found"} }
+  end
+  
+  def model_error(mode, thing)
+    { error: { type: "model error", object: thing, mode: mode, message: "error #{mode[0..-2]}ing the model of class #{thing.class.name}"} }
   end
 end

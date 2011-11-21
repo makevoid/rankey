@@ -23,6 +23,13 @@ GIT
       dm-core (~> 1.3.0.beta)
 
 GIT
+  remote: git://github.com/datamapper/dm-constraints.git
+  revision: 67cfad8018ed40dba510f2b73b38ac19e4c572e0
+  specs:
+    dm-constraints (1.3.0.beta)
+      dm-core (~> 1.3.0.beta)
+
+GIT
   remote: git://github.com/datamapper/dm-core.git
   revision: 27b5b044c0dbc70d87667adb5d86ce0e26cc009d
   specs:
@@ -311,6 +318,7 @@ DEPENDENCIES
   compass!
   dm-active_model (~> 1.3.0.beta)!
   dm-aggregates (~> 1.3.0.beta)!
+  dm-constraints (~> 1.3.0.beta)!
   dm-core (~> 1.3.0.beta)!
   dm-do-adapter (~> 1.3.0.beta)!
   dm-migrations (~> 1.3.0.beta)!

@@ -70,13 +70,13 @@ user.password = "secret"
 user.save
 
 sites.each do |site|
-  site_obj = Site.create name: site[:name]
   keys = Keys.new site[:keys]
+  site_obj = Site.create name: site[:name], keys_src: site[:keys]
   
   keys.all.each do |key_name|
     key = site_obj.keys.create name: key_name
     
-    Position.history_days.each do |day|
+    Position.history_days(:fews).each do |day|
       Engine.all.each do |engine|
         key.positions.create pos: rand(99)+1, engine: engine, created_on: day
       end

@@ -1,16 +1,33 @@
 class NewSiteView extends Backbone.View
   el: "#content"
   
+  # events: {
+  #   "submit form": "add_site"
+  # }
+  
   render: ->
     content = Utils.haml "#newSiteView", {}
     $(@el).html content 
     
+    $(@el).find("form").bind "submit", (evt) => this.add_site(evt)
+    
     this
+    
+  add_site: (evt) ->
+    name = $(@el).find("input[name='name']").val()
+
+    $.post "/sites.json", { name: name }, (data) ->
+      unless data.error
+        # $(@el).find("form").undelegate("submit", "add_site")
+        Rankey.navigate "sites", true
+
+        
+    evt.preventDefault()
 
 class SitesView extends Backbone.View
 
   el: "#content"
-
+    
   constructor: ->
     # _.bindAll(this, 'render')
     # Sites.bind("all",   this.render, this)
@@ -20,6 +37,9 @@ class SitesView extends Backbone.View
   render: ->
     content = Utils.haml "#sitesView", {}
     $(@el).html content 
+    $(".nav_right a").bind("click", ->
+      Rankey.navigate "#{$(this).attr("data-url")}", true
+    )
     # this.addAll()
     
     this
@@ -38,4 +58,4 @@ class SitesView extends Backbone.View
       # console.log site.attributes.name
       this.addOne(site)
     Loading.loaded()
-  
+    

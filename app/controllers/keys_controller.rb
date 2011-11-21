@@ -33,6 +33,12 @@ class KeysController < ApplicationController
     render json: positions
   end
   
+  def keys
+    json_keys = JSON.parse params[:keys]
+    keys = Keys.new json_keys
+    render json: keys.all
+  end
+  
   protected
   
   def build_keys(site, positions)

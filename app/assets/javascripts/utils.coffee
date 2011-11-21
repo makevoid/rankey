@@ -1,3 +1,21 @@
+# extend Backbone.View
+
+class Backbone.HamlView extends Backbone.View
+  haml: (view, data) ->
+    Utils.haml_plain view, data
+    
+  elf: (arg) ->
+    $(@el).find(arg)
+    
+  rend: (template, html) ->
+    this.elf(template).html(html)
+    
+  append: (template, html) ->
+    this.elf(template).append(html)
+  
+Backbone.View = Backbone.HamlView
+
+
 #use console.log safely
 unless console
   console = {} 
@@ -50,8 +68,21 @@ Utils.haml = (selector, object) ->
     console.log "object: ", object
     throw "can't render null haml (selector: #{selector})" 
   haml = Haml template
-  # console.log "haml: ", haml
-  # console.log "selector: ", selector
-  # console.log "rendering: ", object.attributes
   throw "rendering nil model with selector: #{selector}" unless object
   haml object.attributes
+  
+Utils.haml_plain = (selector, object) ->
+  template = $(selector).html()
+  unless template
+    console.log "object: ", object
+    throw "can't render null haml (selector: #{selector})" 
+  haml = Haml template
+  throw "rendering nil model with selector: #{selector}" unless object
+  haml object
+  
+  
+# automations to speed up development, comment them in production
+  
+setTimeout ->
+  Rankey.main_view.siteView.keysView.edit_keys()
+, 1000

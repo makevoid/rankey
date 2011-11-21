@@ -1,6 +1,5 @@
 class LoginView extends Backbone.View
   
-  
   events: {
     "submit form.login": "login"
   }

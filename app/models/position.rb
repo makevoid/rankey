@@ -1,13 +1,16 @@
 class Position
   include DataMapper::Resource
   
+  property :key_id, Integer, min: 1, index: true
   belongs_to :key
-  # property :key_id, Integer, index: true
+  
+  property :id_engine, Integer
+  # property :engine_id, Integer, min: 1, index: true
   # belongs_to :engine
   
   property :id, Serial
   property :pos, Integer, index: true
-  property :engine_id, Integer
+  # property :engine_id, Integer
   property :created_on, Date, index: true 
   
   before :create do
@@ -22,11 +25,13 @@ class Position
     all(created_on: history_days)
   end
   
-  def self.history_days
-    12.downto(0).map do |i|
+  def self.history_days(much=:lots)
+    num = much == :lots ? 12 : 3
+    num.downto(0).map do |i|
       Date.today - i*7 # weeks
     end
   end
+  
   
   def self.today
     all(created_on: Date.today)
@@ -45,11 +50,11 @@ class Position
   end
 
   def engine=(klass)
-    self.engine_id = klass.send "id"
+    self.id_engine = klass.send "id"
   end
   
   def engine
-    Engine.engine_name(engine_id)
+    Engine.engine_name(id_engine)
   end
   
 end
