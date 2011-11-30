@@ -5,9 +5,20 @@ class KeysController < ApplicationController
   layout nil
     
   def index
+        
     site = Site.get params[:site_id]
     positions = Position.today.all(key: site.keys)
+    # positions = Position.today.all(:pos.not => nil, :key => site.keys) if user.optimist?
     keys = build_keys site, positions
+    keys = keys.map do |key|
+      all_pos_nil = lambda do
+        key[:positions].map{ |p| p[:pos].nil? || p[:pos] > Rankey::POS_OK }.uniq == [true]
+      end
+      unless key[:positions] == [] || all_pos_nil.call
+        # puts "pos: ", key[:positions].inspect
+        key 
+      end
+    end.compact if user.optimist?
     render json: keys
   end
   

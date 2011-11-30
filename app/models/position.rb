@@ -37,6 +37,11 @@ class Position
     all(created_on: Date.today)
   end
   
+  def self.optimistic
+    # TODO: move in the model
+    # all(:pos.gte => Rankey::POS_OK )
+  end
+  
   def pos_ok
     pos <= Rankey::POS_OK
   end

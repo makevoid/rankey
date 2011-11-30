@@ -5,21 +5,6 @@ class SitesController < ApplicationController
   before_filter :backbone_default_if_html
   before_filter :login_required
   
-  def login_required
-    return invalid_session if user.nil?
-  end
-  
-  def user
-    # puts "-"*80
-    # puts "SESSION: #{session[:user_session]}"
-    @user ||= @current_user || User.first(session: session[:user_session])
-  end  
-  
-  def invalid_session
-    render json: { error: "session not valid" }
-  end
-  
-  
   def index
     data = user.sites.all.map{ |s| s.list_attrs }
     render json: data

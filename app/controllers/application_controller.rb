@@ -1,6 +1,25 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
   
+  # json session
+  
+  def user
+    # puts "-"*80
+    # puts "SESSION: #{session[:user_session]}"
+    @user ||= @current_user || User.first(session: session[:user_session])
+  end  
+
+  def login_required
+    return invalid_session if user.nil?
+  end
+  
+  def invalid_session
+    render json: { error: "session not valid" }
+  end
+  
+  
+  # 
+  
   def login_url
     raise "why?".inspect
     "/login"
