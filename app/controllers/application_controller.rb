@@ -15,12 +15,15 @@ class ApplicationController < ActionController::Base
   
   def check_user 
     user_session = session[:user_session]
+    # puts "-"*90
+    # puts user_session
     user = if user_session
-      user = session_valid?(user_session)
-      user ? user.attributes : {}
+      curr_user = session_valid?(user_session)
+      curr_user ? curr_user.public_attributes : {}
     else
       {}
     end
+    @current_user = curr_user
     @current_user_data = { session: user_session }.merge(user).to_json
   end
   

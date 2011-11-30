@@ -1,11 +1,27 @@
 class SitesController < ApplicationController
   
-  before_filter :backbone_default_if_html
-  
   layout nil
   
+  before_filter :backbone_default_if_html
+  before_filter :login_required
+  
+  def login_required
+    return invalid_session if user.nil?
+  end
+  
+  def user
+    # puts "-"*80
+    # puts "SESSION: #{session[:user_session]}"
+    @user ||= @current_user || User.first(session: session[:user_session])
+  end  
+  
+  def invalid_session
+    render json: { error: "session not valid" }
+  end
+  
+  
   def index
-    data = Site.all.map{ |s| s.list_attrs }
+    data = user.sites.all.map{ |s| s.list_attrs }
     render json: data
   end
   
@@ -19,7 +35,8 @@ class SitesController < ApplicationController
   end
   
   def create
-    new_site = Site.create name: params[:name]
+    sites = user.group.sites
+    new_site = sites.create name: params[:name]
     data = new_site ? new_site.list_attrs : model_error(:create, :site)
     render json: data
   end
@@ -46,7 +63,7 @@ class SitesController < ApplicationController
   protected
   
   def site 
-    Site.get params[:site_id]
+    Site.first id: params[:site_id], group_id: user.group_id
   end
   
   def get_resp(obj, name, &block)

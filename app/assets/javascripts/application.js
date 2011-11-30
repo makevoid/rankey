@@ -13,6 +13,7 @@
 //= require ./vendor/jquery-xcolor
 //= require ./vendor/jquery-gradienter
 //= require ./vendor/jquery-flot
+//= require ./vendor/jquery-cookie
 //= require models
 //= require utils
 //= require_tree ./collections

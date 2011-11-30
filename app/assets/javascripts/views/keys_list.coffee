@@ -37,7 +37,9 @@ class KeysListView extends Backbone.View
   edit_keys: ->  
     $(@el).find(".btn.edit").unbind("click")
     model = @collection.models.first()
-    @site_id = model.attributes.site_id
+    # @site_id = model.attributes.site_id
+    id_from_path = _(location.pathname.split(/\//)).last()
+    @site_id = id_from_path
     if model
       $.get "/sites/#{@site_id}/keys_src.json", (data) =>
         this.got_keys data
@@ -123,9 +125,10 @@ class KeysListView extends Backbone.View
 
     this.update_preview()
 
-  update_preview: ->
-    $.post "/keys.json", { keys: JSON.stringify @new_keys }, (keys) =>
-      # console.log keys
+  update_preview: ->    
+    data = { keys: JSON.stringify @new_keys }
+    req = $.ajax { url: "/keys.json", type: "post", data: data }
+    req.done (keys) =>
       array = _(keys).map (key) -> 
         if _.isArray(key) then key.join(", ") else key
             

@@ -7,14 +7,14 @@ describe "Sessions", :type => :request do
   it "should login with right username" do
     user = "makevoid@gmail.com"
     pass = "secret"
-    User.create(username: user, password: pass)
+    group = Group.create name: "test"
+    gr = group.users.create(username: user, password: pass)
     u = User.first
-    # puts "good pass?: ", u.good_password?(pass)
-    # puts "good pass?: ", u.good_password?(pass)
+    # p gr.errors.inspect
     post "/sessions.json", { username: user, password: pass, remember_me: true }
     resp = JSON.parse response.body
     resp.symbolize_keys!
-    # puts resp.inspect
+    puts resp.inspect
     resp[:success].should == { "message" => "Logged in!" }
   end
   

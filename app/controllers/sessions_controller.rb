@@ -3,9 +3,7 @@ class SessionsController < ApplicationController # Auth
   before_filter :backbone_default_if_html
   
   layout nil
-  
-  # TODO: translations 1
-  
+    
   def create
     user = login(params[:username], params[:password], params[:remember_me])
     resp = if user
@@ -19,8 +17,7 @@ class SessionsController < ApplicationController # Auth
   end
   
   def destroy
-    logout
-    session[:user_session] = user.session
+    session[:user_session] = nil
     render json: { success: { message: "Logged out!" } }
   end
   

@@ -13,21 +13,22 @@ class LoginView extends Backbone.View
     data = { username: username, password: password, remember_me: remember_me }
     evt.preventDefault()
     self = this
-    $.post("/sessions.json", data, (data) -> 
+    $.post "/sessions.json", data, (data) -> 
     
       if data.error
         self.show_message "Wrong Email or password, please recheck!"
       else
-        self.show_message "logged in: #{data}"
-        g.userData = data
-        g.cur_user.set(session: data.session, name: data.name, email: data.email, logged: true)
+        self.show_message "Welcome #{data.name}!"
+        user_data = { session: data.session, name: data.name, email: data.email }
+        g.userData = JSON.stringify user_data
         console.log "user: ", cur_user
+        Rankey.auth()
         Rankey.navigate "sites", true
-    )
+        Rankey.main_view.init_nav()
   
   # TODO move in UI
   show_message: (msg) ->
-    this.$(".msg").html msg
+    $(".msg").html msg
     
     
   render: ->

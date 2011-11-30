@@ -21,6 +21,8 @@ Rankey::Application.routes.draw do
   get "/logout", to: backbone
   
   post "/sessions", to: "sessions#create"
+  delete "/sessions", to: "sessions#destroy"
+  
   post "/sites", to: "sites#create"
 
   post "/keys",         to: "keys#keys"

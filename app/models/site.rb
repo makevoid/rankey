@@ -7,6 +7,9 @@ class Site
   
   # property :label, String # TODO: label that appears in siteRow
   
+  property :group_id, Integer, min: 1, index: true
+  belongs_to :group
+  
   has n, :keys, constraint: :destroy
   
   before :save do

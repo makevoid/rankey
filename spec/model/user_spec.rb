@@ -4,7 +4,8 @@ require "#{path}/spec_helper"
 
 describe User do
   it "should find an user" do
-    u = User.new
+    g = Group.create(name: "test")
+    u = g.users.new
     u.username = "makevoid@gmail.com" 
     u.password = "secret"
     u.save

@@ -57,6 +57,13 @@ String::singularize = ->
 String::capitalize = -> 
   "#{this[0].toUpperCase()}#{this[1..-1]}"
 
+# rails csfr token
+
+$.ajaxSetup({
+  beforeSend: (xhr) ->
+    xhr.setRequestHeader 'X-CSRF-Token', $('meta[name="csrf-token"]').attr('content')
+})
+
 
 # utils
 

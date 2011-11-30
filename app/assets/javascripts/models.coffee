@@ -1,8 +1,12 @@
 class User extends Backbone.Model
   url: "users"
   
-  logged: ->
-    @attributes.logged
+  initialize: ->
+    @attrs = @attributes
+    
+  is_logged: ->
+    @attributes.session
+
   
 class Key extends Backbone.Model  
   initialize: ->

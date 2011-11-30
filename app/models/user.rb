@@ -15,10 +15,27 @@ class User
   property :created_at, DateTime
   property :updated_at, DateTime
   
+  property :group_id, Integer, min: 1, index: true
+  belongs_to :group
   
+  property :admin, Boolean, default: false
+  property :optimist, Boolean, default: false # an optimist is a user that sees only 
   
   def username=(user)
     self.email = user
+  end
+  
+  def public_attributes
+    filtereds = %w(crypted_password salt)
+    publics = {}
+    attributes.each do |name, val|
+      publics[name] = val unless filtereds.include? name.to_s 
+    end
+    publics
+  end
+  
+  def sites
+    group.sites
   end
   
   attr_accessor :password
