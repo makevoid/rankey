@@ -4,6 +4,7 @@ class SitesController < ApplicationController
   
   before_filter :backbone_default_if_html
   before_filter :login_required
+  skip_before_filter :verify_authenticity_token, only: :update_keys
   
   def index
     data = user.sites.all.map{ |s| s.list_attrs }

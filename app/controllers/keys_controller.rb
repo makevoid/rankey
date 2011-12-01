@@ -1,6 +1,7 @@
 class KeysController < ApplicationController
   
   before_filter :backbone_default_if_html
+  skip_before_filter :verify_authenticity_token, only: :keys
   
   layout nil
     
