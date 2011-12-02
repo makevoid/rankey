@@ -24,5 +24,6 @@
           %div.pos{ data-link: pos.attributes.link }
             = pos.attributes.pos
         :if pos.attributes.pos == undefined
-          %div  
-            100+
+          :if !cur_user.attributes.optimist
+            %div  
+              100+

@@ -38,11 +38,16 @@ class SiteView extends Backbone.View
   
   keys: ->
     @keysView = new KeysListView({ collection: @siteKeys })
-    @siteKeys.fetch()
+    @siteKeys.fetch { error: this.handle_error }
     
   chart: ->
     @siteChart = new SiteChart({ collection: @siteStats })
-    @siteStats.fetch()
+    @siteStats.fetch { error: this.handle_error }
+    
+  handle_error: (bview, err) ->
+    error = JSON.parse(err.responseText)["message"]
+    $(".msg").html("Error: #{error}")
+    Rankey.navigate "login", true
     
   destroy:  ->
     # $(@el).find("a.del").undelegate("click", "destroy")

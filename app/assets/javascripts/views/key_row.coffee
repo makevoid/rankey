@@ -40,6 +40,7 @@ class KeyRow extends Backbone.View
   apply_color: (td, idx, pos, only_pos, darkAmount) ->
 
     pos_tresh = 100  
+    pos_tresh = 99999 if cur_user.attributes.optimist # all green for optimists
     val = if pos > pos_tresh
       -1
     else

@@ -25,6 +25,7 @@ class LoginView extends Backbone.View
         Rankey.auth()
         Rankey.navigate "sites", true
         Rankey.main_view.init_nav()
+        Rankey.append_logo()
   
   # TODO move in UI
   show_message: (msg) ->

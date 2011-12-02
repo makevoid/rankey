@@ -28,9 +28,14 @@ class RankeyView extends Backbone.View
 
   sites: ->
     @sitesView = new SitesView()
-    Sites.fetch()
+    Sites.fetch { error: this.handle_error }
     @sitesView.render()
     Loading.load()
+    
+  handle_error: (bview, err) ->
+    error = JSON.parse(err.responseText)["message"]
+    $(".msg").html("Error: #{error}")
+    Rankey.navigate "login", true
 
   new_site: ->
     newSiteView = new NewSiteView()

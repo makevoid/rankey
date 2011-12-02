@@ -23,6 +23,18 @@ class RankeyRouter extends Backbone.Router
     @cur_user  = new User user_data
     g.cur_user = @cur_user
     @is_logged = @cur_user.is_logged()
+    this.append_logo()
+    
+  append_logo: ->
+    # TODO: if !mobile
+    if @cur_user.attributes.group
+      name = @cur_user.attributes.group.name.toLowerCase()
+      url = "/images/groups/#{name}.png"
+      img = "<img class='logo' src='#{url}' />"
+      $("header").append img
+      $("header img").hide().load ->
+        $("h1").hide()
+        $(this).show()
     
   sites: ->
     return this.require_login() unless @is_logged

@@ -40,9 +40,10 @@
             .pos 
               = keys_pos_count
                positioneds 
-            .totals
-              = keys_count
-               totals
+            :if !cur_user.attributes.optimist
+              .totals
+                = keys_count
+                 totals
                           
           .keysListView
         .foot &nbsp;    

@@ -50,6 +50,7 @@ after :deploy, "deploy:create_database_yml"
 
 after :deploy, "deploy:cleanup"
 after :deploy, "chmod:entire"
+after :deploy, "deploy:link_logo"
 after :deploy, "deploy:compile_assets"
 
 
@@ -58,6 +59,12 @@ namespace :deploy do
   desc "Restart Application"
   task :restart, :roles => :app do
     run "touch #{current_path}/tmp/restart.txt"
+  end
+  
+  desc "Link logo"
+  task :link_logo, :roles => :app do
+    # optional
+    run "cd #{current_path}; cp $HOME/.rankey_logo.png public/images/groups/w2w.png "
   end
   
   desc "Compile assets"

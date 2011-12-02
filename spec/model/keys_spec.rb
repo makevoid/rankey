@@ -32,5 +32,4 @@ describe Keys do
     keys.all.should == ["a", "b", "c", "d", "e", "a c", "a b", "a d", "c e", "b d", "b e", "c d", "a e", "a b d", "a b e", "a c d", "a c e"]
   end
   
-  
 end

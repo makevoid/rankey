@@ -14,7 +14,7 @@ class ApplicationController < ActionController::Base
   end
   
   def invalid_session
-    render json: { error: "session not valid" }
+    render json: { error: "session not valid" }, status: :error
   end
   
   

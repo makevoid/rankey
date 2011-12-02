@@ -31,6 +31,7 @@ class User
     attributes.each do |name, val|
       publics[name] = val unless filtereds.include? name.to_s 
     end
+    publics[:group] = { name: group.name }
     publics
   end
   
