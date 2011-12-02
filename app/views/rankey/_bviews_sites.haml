@@ -54,6 +54,8 @@
       %img.favicon{ src: favicon }
     %td 
       \#{name}
+      :if label
+        \ - \#{label}
     %td= keys_pos_count
     %td= keys_count
 
@@ -67,6 +69,8 @@
           Name 
           %span (es: rankey.it)
           %input{ name: "name", type: "text" }
+          Label 
+          %input{ name: "label", type: "text" }
       
           %input{ type: "submit", value: "Add" }
       .foot

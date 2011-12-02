@@ -3,7 +3,7 @@ class Site
   
   property :id, Serial
   property :name, Text, length: 100, index: true
-  #property :label, String, length: 100
+  property :label, String, length: 100
   property :keys_array, Text
   
   # property :label, String # TODO: label that appears in siteRow
