@@ -29,7 +29,8 @@
   :plain
     %div
       .nav_right
-        %a.btn.del delete
+        :if !cur_user.attributes.optimist
+          %a.btn.del delete
       .site
         %h2= name
         .cont

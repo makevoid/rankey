@@ -121,7 +121,9 @@ class KeysListView extends Backbone.View
     this.elf(".keys_list").each (idx, el) =>
       keys = _($(el).find("input[value!='']")).map (el) =>
         $(el).val()
-      @new_keys.push keys unless keys.length == 0
+      unless keys.length == 0
+        keys = keys[0] if keys.length == 1
+        @new_keys.push keys 
 
     this.update_preview()
 

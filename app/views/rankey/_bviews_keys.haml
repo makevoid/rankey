@@ -2,7 +2,8 @@
   :plain
     %div
       %h3 Keywords
-      %a.btn.edit Edit
+      :if !cur_user.attributes.optimist
+        %a.btn.edit Edit
       .clear
       #keys_src
       %table{ cellspacing: 0 }
