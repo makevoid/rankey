@@ -80,6 +80,7 @@ class Scraper
           log.puts err
           puts err
           
+          raise EngineError if e.page.body =~ /CAPTCHA if you are using advanced terms that robots are known to use/
           raise EngineError if e.response_code.to_i == 999
         end  
         nil
