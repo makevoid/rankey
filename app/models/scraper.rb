@@ -9,8 +9,8 @@ require_relative "bing"
 
 class Scraper
   
-  # SLEEP = 2
-  SLEEP = 20
+  SLEEP = 2
+  # SLEEP = 20
   
   def initialize(options={fixture: false})
     @options = options
