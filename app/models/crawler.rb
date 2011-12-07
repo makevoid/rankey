@@ -6,8 +6,8 @@ end
 
 class Crawler
   
-  # SKIP_YAHOO = true
-  SKIP_YAHOO = false
+  SKIP_YAHOO = true
+  # SKIP_YAHOO = false
   
   def initialize(opts={})
     @scraper = Scraper.new opts
@@ -16,7 +16,9 @@ class Crawler
   def self.crawl!(opts={})
     new(opts).crawl
   end
-    
+  
+  # everyday crawl (less keywords)
+  
   def crawl
     Site.all.each do |site|
       scrape_site(site)
@@ -32,6 +34,28 @@ class Crawler
     end
   end
   
+  # more keywords crawl
+  
+  # def crawl
+  #   keys= Key.all
+  #   positions = keys.map do |key| 
+  #     # Engine.all.map do |engine|
+  #       engine_id = Google.id
+  #       Position.first(id_engine: engine_id, :key => key, :order => :created_on.desc)
+  #     # end
+  #   end
+  #   
+  #   positions.each do |pos|
+  #     key = pos.key
+  #     site = key.site
+  #     scrape_key site.name, key
+  #   end
+  #   
+  #   true # TODO: consider returning a crawl status
+  # end
+
+  
+
   def scrape_key(domain, key)
     
     Engine.all.each do |engine|

@@ -65,7 +65,7 @@ namespace :deploy do
   task :link_logo, :roles => :app do
     # optional
     groups = "#{current_path}/public/images/groups"
-    run "mkdir -p #{groups}; cp /home/www-data/.rankey_logo.png #{groups}/w2w.png "
+    run "mkdir -p #{groups}; cp /home/www-data/.rankey_logo.png #{groups}/win2win.png "
   end
   
   desc "Compile assets"

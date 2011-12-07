@@ -6,20 +6,21 @@ class KeysController < ApplicationController
   layout nil
     
   def index
-        
     site = Site.get params[:site_id]
-    positions = Position.today.all(key: site.keys)
-    # positions = Position.today.all(:pos.not => nil, :key => site.keys) if user.optimist?
+    
+    # better solution (only today)
+    # positions = Position.today.all(key: site.keys)
+    
+    # worse
+    keys = site.keys
+    positions = keys.map do |key| 
+      Engine.all.map do |engine|
+        Position.first(id_engine: engine.id, :key => key, :order => :created_on.desc)
+      end
+    end.flatten.compact
+
     keys = build_keys site, positions
-    keys = keys.map do |key|
-      all_pos_nil = lambda do
-        key[:positions].map{ |p| p[:pos].nil? || p[:pos] > Rankey::POS_OK }.uniq == [true]
-      end
-      unless key[:positions] == [] || all_pos_nil.call
-        # puts "pos: ", key[:positions].inspect
-        key 
-      end
-    end.compact if user.optimist?
+    keys = optimist_keys keys if user.optimist?
     render json: keys
   end
   
@@ -61,6 +62,18 @@ class KeysController < ApplicationController
       end
       key.attributes.merge(positions: pos) 
     end
+  end
+  
+  def optimist_keys(keys)
+    keys.map do |key|
+      all_pos_nil = lambda do
+        key[:positions].map{ |p| p[:pos].nil? || p[:pos] > Rankey::POS_OK }.uniq == [true]
+      end
+      unless key[:positions] == [] || all_pos_nil.call
+        # puts "pos: ", key[:positions].inspect
+        key 
+      end
+    end.compact
   end
   
 end
