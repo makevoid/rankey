@@ -9,6 +9,9 @@ Dir.glob("#{path}/app/models/*.rb").map do |model|
   require model
 end
 
+engine = eval(ARGV[1].capitalize)
+raise "pass a valid engine, please" unless Engine.all.include? engine
+
 DataMapper.finalize
 if env == "production"
   conf = YAML::load File.read("#{path}/config/database.yml")
@@ -21,4 +24,4 @@ DataMapper.setup(:default, "mysql://#{pass}localhost/rankey_#{env}")
 # Position.today.each{ |p| p.destroy }
 
 c = Crawler.new# fixture: true
-c.crawl
+c.crawl engine

@@ -6,20 +6,17 @@ end
 
 class Crawler
   
-  SKIP_YAHOO = true
-  # SKIP_YAHOO = false
+  # SKIP_YAHOO = true
+  SKIP_YAHOO = false
   
   def initialize(opts={})
     @scraper = Scraper.new opts
   end
   
-  def self.crawl!(opts={})
-    new(opts).crawl
-  end
-  
   # everyday crawl (less keywords)
   
-  def crawl
+  def crawl(engine)
+    @engine = engine
     Site.all.each do |site|
       scrape_site(site)
     end
@@ -57,13 +54,12 @@ class Crawler
   
 
   def scrape_key(domain, key)
-    
-    Engine.all.each do |engine|
-      next if SKIP_YAHOO && engine == Yahoo 
-      exists = Position.count(created_on: Date.today, key: key, id_engine: engine.id) >= 1
-      # exists = false
-      scrape_base engine, domain, key unless exists
-    end 
+    # Engine.all.each do |engine|
+    engine = @engine
+    # next if SKIP_YAHOO && engine == Yahoo 
+    exists = Position.count(created_on: Date.today, key: key, id_engine: engine.id) >= 1
+    scrape_base engine, domain, key unless exists
+    # end 
   end
   
   def scrape_base(engine, domain, key)
