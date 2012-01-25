@@ -27,8 +27,7 @@ class Crawler
         # p pos
         if pos == 0 
           site = key.site
-          puts "gap [#{gap}] - scraping key: #{key.id}\t #{key.name} - #{site.name}"
-          scrape_base engine, site.name, key 
+          scrape_base engine, site.name, key, gap
         end
       end
     end
@@ -84,7 +83,7 @@ class Crawler
   #   # end 
   # end
   
-  def scrape_base(engine, domain, key)
+  def scrape_base(engine, domain, key, gap=nil)
     result = begin 
       @scraper.scrape(engine, domain, key.name)
     rescue EngineError 
@@ -95,7 +94,7 @@ class Crawler
     end
     
     @scraper.logger do |log|
-      log.puts "#{Time.now.strftime("%m-%d %H:%M")} - #{result}\t #{key.name} - #{engine} [#{domain}]"
+      log.puts "#{Time.now.strftime("%m-%d %H:%M")} - gap: #{gap} - #{result}\t #{key.name} - #{engine} [#{domain}]"
     end
     # puts "#{Time.now.strftime("%m-%d %H:%M")} - #{result}\t #{key.name} - #{engine} [#{domain}]"
     save_result result, key, engine unless result == :fail

@@ -61,7 +61,22 @@ add cronjob:
 
 grepkill some processes:
 
-    pgrep -fl google | awk '{print $1}' | xargs kill -9 
+    pgrep -fl google | awk '{print $1}' | xargs kill -9
+    
+    
+    
+    pgrep -fl google
+    pgrep -fl yahoo
+    pgrep -fl bing
+    
+    
+    pgrep -fl google | awk '{print $1}' | xargs kill -9
+    pgrep -fl yahoo | awk '{print $1}' | xargs kill -9
+    pgrep -fl bing | awk '{print $1}' | xargs kill -9
+    
+    su www-data - -c "cd /www/rankey/current; ruby lib/crawl.rb production google" >> /www/rankey/current/log/crawl.log &
+    su www-data - -c "cd /www/rankey/current; ruby lib/crawl.rb production yahoo" >> /www/rankey/current/log/crawl.log &
+    su www-data - -c "cd /www/rankey/current; ruby lib/crawl.rb production bing" >> /www/rankey/current/log/crawl.log &
   
 
 
