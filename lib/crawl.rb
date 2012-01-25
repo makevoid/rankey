@@ -1,4 +1,20 @@
-env = ARGV[0] || "development"
+if ARGV[0].nil? || ARGV[1].nil?
+  puts "
+usage:
+  
+  ruby lib/crawl.rb ENV ENGINE
+  
+
+example:
+
+  ruby lib/crawl.rb development google
+
+  "
+  exit
+end
+
+env = ARGV[0]
+ENV["RAILS_ENV"] = env
 
 require 'bundler/setup'
 Bundler.require :dm

@@ -9,8 +9,11 @@ require_relative "bing"
 
 class Scraper
   
-  # SLEEP = 10
-  SLEEP = 30
+  SLEEP = case ENV["RAILS_ENV"]
+    when "production"   then 30
+    when "test"         then 0
+    when "development"  then 1
+  end
   
   def initialize(options={fixture: false})
     @options = options

@@ -13,23 +13,45 @@ class Crawler
     @scraper = Scraper.new opts
   end
   
-  # everyday crawl (less keywords)
+  # new crawl (smart)
   
   def crawl(engine)
     @engine = engine
-    Site.all.each do |site|
-      scrape_site(site)
-    end
+    # new crawl
+    keys = Key.all#[600..610]
     
-    true # TODO: consider returning a crawl status
+    7.downto(0) do |gap|
+      keys.each do |key| 
+        # p key
+        pos = Position.count(key: key, :created_on.lte => Date.today, :created_on.gte => Date.today-gap, id_engine: engine.id); 
+        # p pos
+        if pos == 0 
+          site = key.site
+          puts "gap [#{gap}] - scraping key: #{key.id}\t #{key.name} - #{site.name}"
+          scrape_base engine, site.name, key 
+        end
+      end
+    end
   end
   
-  def scrape_site(site, options={debug: false})
-    limit = options[:debug] ? 1 : -1
-    site.keys[0..limit].each do |key|
-      scrape_key site.name, key
-    end
-  end
+  # everyday crawl (less keywords)
+  # 
+  # def crawl(engine)
+  #   @engine = engine
+  #   Site.all.each do |site|
+  #     scrape_site(site)
+  #   end
+  #   
+  #   true # TODO: consider returning a crawl status
+  # end
+  # 
+  # def scrape_site(site, options={debug: false})
+  #   limit = options[:debug] ? 1 : -1
+  #   site.keys[0..limit].each do |key|
+  #     scrape_key site.name, key
+  #   end
+  # end
+  
   
   # more keywords crawl
   
@@ -53,14 +75,14 @@ class Crawler
 
   
 
-  def scrape_key(domain, key)
-    # Engine.all.each do |engine|
-    engine = @engine
-    # next if SKIP_YAHOO && engine == Yahoo 
-    exists = Position.count(created_on: Date.today, key: key, id_engine: engine.id) >= 1
-    scrape_base engine, domain, key unless exists
-    # end 
-  end
+  # def scrape_key(domain, key)
+  #   # Engine.all.each do |engine|
+  #   engine = @engine
+  #   # next if SKIP_YAHOO && engine == Yahoo 
+  #   exists = Position.count(created_on: Date.today, key: key, id_engine: engine.id) >= 1
+  #   scrape_base engine, domain, key unless exists
+  #   # end 
+  # end
   
   def scrape_base(engine, domain, key)
     result = begin 
