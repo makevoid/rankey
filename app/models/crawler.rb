@@ -72,6 +72,9 @@ class Crawler
       :fail
     end
     
+    @scraper.logger do |log|
+      log.puts "#{result}\t #{key.name} - #{engine} - #{domain}"
+    end
     puts "#{result}\t #{key.name} - #{engine} - #{domain}"
     save_result result, key, engine unless result == :fail
   end
