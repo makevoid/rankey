@@ -73,9 +73,9 @@ class Crawler
     end
     
     @scraper.logger do |log|
-      log.puts "#{result}\t #{key.name} - #{engine} - #{domain}"
+      log.puts "#{Time.now.strftime("%m-%d %H:%M")} - #{result}\t #{key.name} - #{engine} [#{domain}]"
     end
-    puts "#{result}\t #{key.name} - #{engine} - #{domain}"
+    # puts "#{Time.now.strftime("%m-%d %H:%M")} - #{result}\t #{key.name} - #{engine} [#{domain}]"
     save_result result, key, engine unless result == :fail
   end
   
