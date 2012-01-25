@@ -23,6 +23,11 @@ integrazione api adwords:
 
 ### TODO:
 
+add cronjob:       
+
+    DELETE from positions WHERE created_on < (NOW() - INTERVAL 2 WEEK)      
+
+
 - manage auth & roles
 
 - site page
