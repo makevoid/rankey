@@ -59,6 +59,12 @@ add cronjob:
 
 ### notes to myself
 
+grepkill some processes:
+
+    pgrep -fl google | awk '{print $1}' | xargs kill -9 
+  
+
+
 insights:
 
 GET http://www.google.com/insights/search/overviewReport?q=QUERY&content=1

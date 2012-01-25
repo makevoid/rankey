@@ -50,29 +50,29 @@ class Scraper
       
       url = engine.base_url(key)
       
-      times = 0
+      # times = 0
       begin
-        times += 1
+        # times += 1
         page = @agent.get url
         sleep SLEEP if SLEEP
         page
         
       rescue Mechanize::ResponseCodeError => e
-        if times < 4
-          @agent = Mechanize.new
-          @agent.user_agent = 'Mac Firefox'
-          
-          sleep times*2
-          puts "got: #{e.message} - retrying: #{times}* time"
-          puts "#{e.page.body}"
-          
-          if times < 3 #spawn new agent
-            @agent = Mechanize.new
-            @agent.user_agent = 'Mac Safari'
-          end
-          
-          retry 
-        end
+        # if times < 4
+        #   @agent = Mechanize.new
+        #   @agent.user_agent = 'Mac Firefox'
+        #   
+        #   sleep times*2
+        #   puts "got: #{e.message} - retrying: #{times}* time"
+        #   puts "#{e.page.body}"
+        #   
+        #   if times < 3 #spawn new agent
+        #     @agent = Mechanize.new
+        #     @agent.user_agent = 'Mac Safari'
+        #   end
+        #   
+        #   retry 
+        # end
         
         logger do |log| 
           get_error = lambda{ |urlz, er| "Error: Scraper getting url: #{urlz} raising #{er.class}: #{er.message} - Scraper.get" }
