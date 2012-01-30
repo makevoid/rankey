@@ -25,16 +25,17 @@ class KeysController < ApplicationController
   end
   
   def history
-    site = Site.get params[:site_id]
-    # positions = Position.avg(:pos, key: site.keys, created_on: Position.history_days)#.map{ |a| a.attributes }
-    days = []
-    Position.history_days.each do |day|
-      avg = Position.avg(:pos, key: site.keys, created_on: day )
-      pos = Position.count(key: site.keys, created_on: day, :pos.lte => Rankey::POS_OK )
-      days << { pos: pos, avg: avg.to_f, day: day }
-    end    
-    
-    render json: days
+    # site = Site.get params[:site_id]
+    # # positions = Position.avg(:pos, key: site.keys, created_on: Position.history_days)#.map{ |a| a.attributes }
+    # days = []
+    # Position.history_days.each do |day|
+    #   avg = Position.avg(:pos, key: site.keys, created_on: day )
+    #   pos = Position.count(key: site.keys, created_on: day, :pos.lte => Rankey::POS_OK )
+    #   days << { pos: pos, avg: avg.to_f, day: day }
+    # end    
+    # 
+    # render json: days
+    render json: []
   end
   
   def history_median

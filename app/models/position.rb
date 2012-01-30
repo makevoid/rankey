@@ -8,10 +8,10 @@ class Position
   # property :engine_id, Integer, min: 1, index: true
   # belongs_to :engine
   
-  property :id, Serial
+  property :id, Serial 
   property :pos, Integer, index: true
   # property :engine_id, Integer
-  property :created_on, Date, index: true 
+  property :created_on, Date, index: true, :lazy => true  
   
   before :create do
     self.created_on = Date.today unless self.created_on
@@ -25,10 +25,10 @@ class Position
     all(created_on: history_days)
   end
   
-  def self.history_days(much=:lots)
-    num = much == :lots ? 12 : 3
+  def self.history_days(much=:few)
+    num = much == :few ? 3 : 12
     num.downto(0).map do |i|
-      Date.today - i*7 # weeks
+      Date.today - i*2 # weeks
     end
   end
   

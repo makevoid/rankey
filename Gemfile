@@ -58,7 +58,9 @@ group :development, :test, :production, :travis, :app do
 end
 
 
-
+group :development do
+  gem "thin"
+end
 
 group :development, :no_ci, :production do
   gem 'jquery-rails'

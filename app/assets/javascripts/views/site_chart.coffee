@@ -48,12 +48,12 @@ class SiteChart extends Backbone.View
 
     # main
     resize_sshot()
-    draw_chart()
+    # draw_chart()
     
     $(window).unbind("resize")
     $(window).bind("resize", ->
       resize_sshot()
-      draw_chart()
+      # draw_chart()
     )
     
     # console.log "rendered", this.collection
