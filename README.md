@@ -57,38 +57,38 @@ add cronjob:
 
 
 
-### notes to myself
 
-grepkill some processes:
+### crontab:
 
-    pgrep -fl google | awk '{print $1}' | xargs kill -9
-    
-    
-    
-    pgrep -fl google
-    pgrep -fl yahoo
-    pgrep -fl bing
-    
-    
-    pgrep -fl google | awk '{print $1}' | xargs kill -9
-    pgrep -fl yahoo | awk '{print $1}' | xargs kill -9
-    pgrep -fl bing | awk '{print $1}' | xargs kill -9
     
     su www-data - -c "cd /www/rankey/current; ruby lib/crawl.rb production google" >> /www/rankey/current/log/crawl.log &
     su www-data - -c "cd /www/rankey/current; ruby lib/crawl.rb production yahoo" >> /www/rankey/current/log/crawl.log &
     su www-data - -c "cd /www/rankey/current; ruby lib/crawl.rb production bing" >> /www/rankey/current/log/crawl.log &
   
-
-
-insights:
-
-GET http://www.google.com/insights/search/overviewReport?q=QUERY&content=1
-
-
-clienti potenziali:
-
-- ditte che fanno servizio di seo e sem con tanti siti web 
+    mysql -u root --password=SECRET rankey_production -e "DELETE from positions WHERE created_on < (NOW() - INTERVAL 1 WEEK)"
+  
 
 
 
 
+    ### notes to myself
+
+    grepkill some processes:
+
+
+        pgrep -fl google
+        pgrep -fl yahoo
+        pgrep -fl bing    
+
+        pgrep -fl google | awk '{print $1}' | xargs kill -9
+        pgrep -fl yahoo | awk '{print $1}' | xargs kill -9
+        pgrep -fl bing | awk '{print $1}' | xargs kill -9
+
+    insights:
+
+    GET http://www.google.com/insights/search/overviewReport?q=QUERY&content=1
+
+
+    clienti potenziali:
+
+    - ditte che fanno servizio di seo e sem con tanti siti web 
