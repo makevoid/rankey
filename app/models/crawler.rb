@@ -90,6 +90,7 @@ class Crawler
       @scraper.logger do |log|
         log.puts "Error: Engine Error on '#{engine}'"
       end
+      sleep Scraper::SLEEP
       :fail
     end
     
