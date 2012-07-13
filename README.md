@@ -5,7 +5,7 @@
 
 Try it:
 
-edit config/database.yml and put your db configs, then:
+edit config/database.yml and write your db configs, then:
 
 
     bundle
