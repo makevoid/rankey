@@ -3,7 +3,7 @@ require 'spec_helper'
 load "#{Rails.root}/app/models/user.rb"
 
 describe "Sessions", :type => :request do
-  
+
   it "should login with right username" do
     user = "makevoid@gmail.com"
     pass = "secret"
@@ -17,6 +17,5 @@ describe "Sessions", :type => :request do
     puts resp.inspect
     resp[:success].should == { "message" => "Logged in!" }
   end
-  
-end
 
+end
