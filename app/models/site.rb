@@ -49,13 +49,13 @@ class Site
   KEY_POS_COUNTS = {}
   KEY_COUNTS = {}
 
-  # Thread.new {
-  #   loop do
-  #     Site::KEY_POS_COUNTS.clear
-  #     Site::KEY_COUNTS.clear
-  #     sleep 3600 # 1h
-  #   end
-  # }
+  Thread.new {
+    loop do
+      Site::KEY_POS_COUNTS.clear
+      Site::KEY_COUNTS.clear
+      sleep 3600 # 1h
+    end
+  }
 
   def keys_pos_count
     return KEY_POS_COUNTS[id] if KEY_POS_COUNTS[id]
