@@ -1,30 +1,30 @@
 %script{ type: "text/template", id: "key_srcView" }<
   :plain
     %input{ name: "keys_site[]", class: klass, data-site: site, data-level: level, type: "text", placeholder: "..." }
-    
+
 
 %script{ type: "text/template", id: "keyslist_srcView" }<
   :plain
     .keys_list{ data-list: list }
       .keys
-      -#%a.btn.add Add    
+      -#%a.btn.add Add
       .clear
-      
+
 %script{ type: "text/template", id: "keys_srcView" }<
   :plain
     %div
       %span.info (type a keyword and press enter)
       .keys_lists
-      -#%a.btn.add Add   
-      .save 
+      -#%a.btn.add Add
+      .save
         %a.btn.add Save
         %img.spinner_img{ src: "/images/icons/spinner.gif" }
-      %h4 
+      %h4
         %span.keys_num 0
         keywords
       .combinations
         Add some more...
-      
+
 %script{ type: "text/template", id: "siteView" }<
   :plain
     %div
@@ -34,45 +34,45 @@
       .site
         %h2= name
         .cont
-          %a{ href: link, target: "_blank" } 
+          %a{ href: link, target: "_blank" }
             %img.sshot{ src: image }
           .siteChart
           #tableBtns
-            .pos 
+            .pos
               = keys_pos_count
-               positioneds 
+               positioneds
             :if !cur_user.attributes.optimist
               .totals
                 = keys_count
                  totals
-                          
+
           .keysListView
-        .foot &nbsp;    
+        .foot &nbsp;
 
 %script{ type: "text/template", id: "siteRow" }<
   :plain
     %td.ico
       %img.favicon{ src: favicon }
-    %td 
+    %td
       \#{name}
       :if label
         \ - \#{label}
     %td= keys_pos_count
     %td= keys_count
 
-    
+
 %script{ type: "text/template", id: "newSiteView" }<
-  :plain  
+  :plain
     .page
       %h2 Add a Site
       .cont
         %form{ method: "post", url: "/sites" }
-          Name 
+          Name
           %span (es: rankey.it)
           %input{ name: "name", type: "text" }
-          Label 
+          Label
           %input{ name: "label", type: "text" }
-      
+
           %input{ type: "submit", value: "Add" }
       .foot
 
@@ -81,16 +81,12 @@
     %div
       .nav_right
         %a#new_site_btn.btn.add{ href: "javascript:void(0)", data-url: "sites/new"  } New Site
-        
-        %span search:
-        #search
-          %input{ name: "key", type: "search" }
-          %img.icon{ src: "/images/icons/search.png" }
+
       .clear
       %table{ cellspacing: 0 }
         %thead
           %tr
-            %th 
+            %th
             %th site
             %th positioneds
             %th totals

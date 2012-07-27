@@ -1,53 +1,57 @@
 @import mixins
-//@import clearfix
 
-@import compass/utilities/general/clearfix
-@import compass/reset/utilities
-
-=custom-reset // fork of global-reset
-  html, body, div, span, applet, object, iframe,
-  h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-  a, abbr, acronym, address, big, cite, code,
-  del, dfn, em, img, ins, kbd, q, s, samp,
-  small, strike, strong, sub, sup, tt, var,
-  b, u, i, center,
-  dl, dt, dd, ol, ul, li,
-  fieldset, form, label, legend,
-  table, caption, tbody, tfoot, thead, tr, th, td,
-  article, aside, canvas, details, embed, 
-  figure, figcaption, footer, header, hgroup, 
-  menu, nav, output, ruby, section, summary,
-  time, mark, audio, video
-    +reset-box-model
-    +reset-font
-  body
-    +reset-body
-  ol, ul
-    +reset-list-style
-  table
-    //   +reset-table
-    border-spacing: 0
-  caption, th, td
-    +reset-table-cell
-  q, blockquote
-    +reset-quotation
-  a img
-    +reset-image-anchor-border
-  +reset-html5
-
-  // de-reset - useful defaults
-  h1, h2, h3, h4, h5, h6  
-    font-weight: bold
-
-+custom-reset
-
-@import compass/utilities/tables
-@import compass/utilities/tables/scaffolding
-@import compass/css3/border-radius
-@import compass/typography/links/link-colors
-// @import compass/typography/vertical_rhythm
+@import clearfix
+@import compass/reset
+@import compass/utilities
 @import compass/css3
 
+// @import compass/utilities/general/clearfix
+// @import compass/reset/utilities
+
+// =custom-reset // fork of global-reset
+//   html, body, div, span, applet, object, iframe,
+//   h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+//   a, abbr, acronym, address, big, cite, code,
+//   del, dfn, em, img, ins, kbd, q, s, samp,
+//   small, strike, strong, sub, sup, tt, var,
+//   b, u, i, center,
+//   dl, dt, dd, ol, ul, li,
+//   fieldset, form, label, legend,
+//   table, caption, tbody, tfoot, thead, tr, th, td,
+//   article, aside, canvas, details, embed,
+//   figure, figcaption, footer, header, hgroup,
+//   menu, nav, output, ruby, section, summary,
+//   time, mark, audio, video
+//     +reset-box-model
+//     +reset-font
+//   body
+//     +reset-body
+//   ol, ul
+//     +reset-list-style
+//   table
+//     //   +reset-table
+//     border-spacing: 0
+//   caption, th, td
+//     +reset-table-cell
+//   q, blockquote
+//     +reset-quotation
+//   a img
+//     +reset-image-anchor-border
+//   +reset-html5
+
+//   // de-reset - useful defaults
+//   h1, h2, h3, h4, h5, h6
+//     font-weight: bold
+
+// +custom-reset
+
+// @import compass/utilities/tables
+// @import compass/utilities/tables/scaffolding
+// @import compass/css3/border-radius
+// @import compass/typography/links/link-colors
+// // @import compass/typography/vertical_rhythm
+// @import compass/css3
+//
 $default-radius: 12px
 
 
@@ -70,7 +74,7 @@ $table-color: #EBEDF0    // grey
     +border-corner-radius(bottom, right, $default-radius)
 
 
-  
+
 
 // style
 
@@ -85,11 +89,11 @@ $links: #444
 
 +font-face("Nova Square", font-files("../fonts/nova_square.ttf", truetype, "../fonts/nova_square.otf", opentype))
 
-  
+
 
 
 html, body
-  height: 100%  
+  height: 100%
 
 body
   background: $bg
@@ -106,7 +110,7 @@ body
 a
   // link-colors($normal, $hover, $active, $visited, $focus)
   +link-colors($links, $links + #111)
-  
+
 input
   padding: 4px 6px
   width: 300px
@@ -125,12 +129,12 @@ input[type='submit'], input.submit, a.button, a.btn, nav a, .sites_btn
   padding: 5px 10px
   &:hover
     color: $bg
-  
+
 a.del
   +color(#800)
 a.add, input[type='submit']
   +color(#1B9110)
-  
+
 input[type='submit']
   font-size: 1.1em
   padding: 5px 14px
@@ -140,13 +144,13 @@ h1
   font-family: Nova Square
   padding: 10px
   font-size: 1.7em
-  
+
 .logo
   padding: 10px 20px 10px
-  
+
 h2
   font-size: 1.3em
-  
+
 h3
   font-size: 1.3em
   margin: 10px 0
@@ -161,27 +165,27 @@ form
   padding: 10px
 
 nav
-  margin: 0 0 10px 10px 
+  margin: 0 0 10px 10px
   li
     margin: 0 5px 0 0
   li.current a
     +color(darken($table-color, 65%))
-  
+
 #content
   min-width: 600px
   margin: 0 10px
-    
-#login  
+
+#login
   margin: 10px 5px 0 0
   float: right
-    
-.clear 
+
+.clear
   clear: both
 
 .nav_right
   float: right
   margin: -33px 0 0
-  
+
   a, span
     float: left
   span
@@ -193,7 +197,7 @@ nav
 #search
   float: left
   margin: 0 0 0 6px
-  font-size: 1.2em 
+  font-size: 1.2em
   input[type='search']
     zoom: 1.19
     margin: 0
@@ -205,7 +209,7 @@ nav
     left: 3px
     width: 11px
 
-#rankey .msg 
+#rankey .msg
   margin-bottom: 10px
 
 
@@ -223,7 +227,7 @@ $spin-width: 102%
     position: absolute
     opacity: 0.6
     +border-radius(15px)
-    
+
   .bg_top
     +background-image(linear-gradient(left, #fff, #666, #fff))
     animation: mymove 1s
@@ -235,35 +239,35 @@ $spin-width: 102%
     -webkit-animation-timing-function: ease-in-out
     -webkit-animation-direction: backwards
 
-  .bg_bottom  
+  .bg_bottom
     +background-image(linear-gradient(left, #222, #fff, #222))
 
 
 @keyframes mymove
-  from 
+  from
     left: 0px
-  to 
+  to
     left: $spin-width
-    
+
 @-moz-keyframes mymove
-  from 
+  from
     left: 0px
-  to 
+  to
     left: $spin-width
-    
+
 @-webkit-keyframes mymove
-  from 
+  from
     width: 0.1%
     left: $spin-width/2
-  to 
+  to
     width: $spin-width
     left: 0px
 // @-webkit-keyframes mymove
-//   from 
+//   from
 //     +transition(translate(0px, 0))
-//   to 
+//   to
 //     +transition(translate(300px, 0))
-    
+
 
 .spinner, .spinner div
   width: $spin-width
@@ -281,7 +285,7 @@ $spin-width: 102%
   +transition(opacity, 0.3s, ease-in-quad)
   opacity: 1
 
-a:hover .sshot    
+a:hover .sshot
   border: 2px solid darken($table-color, 40%)
   opacity: 0.9
 
@@ -296,7 +300,7 @@ a:hover .sshot
     margin: 9px 0 0 10px
 
 #keys_src
-  margin: 0 0 15px 
+  margin: 0 0 15px
   .keys_list
     border: 1px solid darken($table-color, 40%)
     +border-radius(10px)
@@ -307,7 +311,7 @@ a:hover .sshot
     a.btn, .keys
       float: left
     a.btn
-      margin: 12px 0 0 
+      margin: 12px 0 0
     input
       margin-right: 10px
       float: left
@@ -333,7 +337,7 @@ td.ico
   width: 22px
   position: relative
   top: 5px
-  
+
 =panel-head
   background: darken($table-color, 5%)
   +background-image(linear-gradient(darken($table-color, 70%), darken($table-color, 50%), darken($table-color, 40%)))
@@ -357,13 +361,13 @@ table
       +border-radius($default-radius*15)
       border: 1px solid #999
       width: 30px
-  
+
   $padding: 8px
   th, td
     padding: $padding
   tr td:first-child, tr th:first-child
     padding-left: $padding + 5px
-  thead tr    
+  thead tr
     +panel_head
     th
       padding: $padding+5px $padding
@@ -374,7 +378,7 @@ table
   tr.odd
     background: darken(adjust-hue($table-color, 10deg), 3%)
     +background-image(linear-gradient(#fff, darken(adjust-hue($table-color, 25deg), 6%)))
- 
+
 
 tbody.sitesList tr, tbody.keysList tr
   +transition(opacity, 0.2s, ease-in-quad)
@@ -385,11 +389,11 @@ tbody.sitesList tr, tbody.keysList tr
     color: #000
     background: darken(adjust-hue($table-color, 15deg), 6%)
     +background-image(linear-gradient(#fff, darken(adjust-hue($table-color, -60deg), 35%)))
-     
+
 .keysListView table
-  font-size: 0.9em  
-  
-  
+  font-size: 0.9em
+
+
 #tableBtns
   clear: left
   text-align: right
@@ -406,7 +410,7 @@ tbody.sitesList tr, tbody.keysList tr
     border: 1px solid #3B6541
     +background-image(linear-gradient(#fff, #B0F1B9))
     cursor: pointer
-  .totals  
+  .totals
     color: #434141
     display: inline
     +background-image(linear-gradient(#fff, #BBB9B9))
@@ -423,7 +427,7 @@ span.info
 
 .site, .page
   $padding-sides: 12px
-  $border: 2px solid darken($table-color, 45%)   
+  $border: 2px solid darken($table-color, 45%)
   h2
     +panel_head
     // position: fixed
@@ -432,21 +436,21 @@ span.info
     +border-radius-top($default-radius)
     padding: $padding-sides+5px $padding-sides
 
-  .cont  
+  .cont
     border-left: $border
     border-right: $border
     +background-image(linear-gradient(darken($table-color, 0%), darken($table-color, 20%)))
     padding: $padding-sides $padding-sides
 
-  .foot    
+  .foot
     border: $border
     border-top: none
     +background-image(linear-gradient(darken($table-color, 20%), $table-color))
     padding: $padding-sides $padding-sides
-    +border-radius-bottom($default-radius)    
+    +border-radius-bottom($default-radius)
 
 @media (max-width:480px)
   #search input
     width: 150px
-      
-@media (orientation: portrait) 
+
+@media (orientation: portrait)

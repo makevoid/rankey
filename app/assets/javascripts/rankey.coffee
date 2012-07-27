@@ -8,23 +8,22 @@ class RankeyRouter extends Backbone.Router
     'sites/new': 'new_site',
     'sites': 'sites',
     'sites/:site_id': 'site',
-    'logout': 'logout',
     'not_found': 'blank',
   }
 
   initialize: ->
     this.auth()
     @main_view = new RankeyView()
-  
-  # authentication 
-  
+
+  # authentication
+
   auth: ->
     user_data  = JSON.parse g.userData
     @cur_user  = new User user_data
     g.cur_user = @cur_user
     @is_logged = @cur_user.is_logged()
     this.append_logo()
-    
+
   append_logo: ->
     # TODO: if !mobile
     if @cur_user.attributes.group
@@ -35,14 +34,14 @@ class RankeyRouter extends Backbone.Router
       $("header img").hide().load ->
         $("h1").hide()
         $(this).show()
-    
+
   sites: ->
     return this.require_login() unless @is_logged
     @main_view.sites()
 
   path: ->
     document.location.pathname
-    
+
   require_login: ->
     # console.log(this.path() == "/")
     $(".msg").html "Login first please!" unless this.path() == "/"
@@ -60,14 +59,14 @@ class RankeyRouter extends Backbone.Router
     Loading.load()
     req.done (data) =>
       console.log data
-      Loading.loaded()      
+      Loading.loaded()
     Rankey.navigate "login", true
-                             
-  new_site: (site_id) ->     
+
+  new_site: (site_id) ->
     return this.require_login() unless @is_logged
     @main_view.new_site()
-    
-  site: (site_id) ->       
+
+  site: (site_id) ->
     return this.require_login() unless @is_logged
     @main_view.site(site_id)
 
@@ -77,8 +76,8 @@ class RankeyRouter extends Backbone.Router
   %h2 Notice\n
   .cont\n
     %p Section not found\n
-    %p\n 
-      Go back to \n 
+    %p\n
+      Go back to \n
       %a.sites_btn{ href: 'javascript:void(0)' } Sites\n
   .foot\n
     "
@@ -86,11 +85,11 @@ class RankeyRouter extends Backbone.Router
     $("#content").html haml({})
     $(".sites_btn").bind("click", ->
       Rankey.navigate "", true
-    ) 
+    )
 
 $( ->
   g.Rankey = new RankeyRouter()
-  
+
   Backbone.history.start({
       pushState: true
   });
