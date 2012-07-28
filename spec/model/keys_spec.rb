@@ -32,4 +32,9 @@ describe Keys do
     keys.all.should == ["a", "b", "c", "d", "e", "a c", "a b", "a d", "c e", "b d", "b e", "c d", "a e", "a b d", "a b e", "a c d", "a c e"]
   end
 
+  it "should return correct keys right?!? [D]" do
+    keys = Keys.new [["1", "2", "3"], "a"]
+    keys.all.should == ["1", "2", "3", "a", "1 a", "2 a", "3 a"]
+  end
+
 end

@@ -40,8 +40,6 @@ class SitesController < ApplicationController
 
   def update_keys
     keys = JSON.parse params[:keys]
-    puts "keys:"
-    p keys
     data = site && site.update_keys(keys) ?  { success: "Site keys updated (#{site.keys.count})" } : { error: "Error updating the site" }
     render json: data
   end

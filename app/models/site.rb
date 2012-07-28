@@ -38,7 +38,6 @@ class Site
   end
 
   def keys_src
-    puts "keys: ", self.keys_array
     eval(self.keys_array)
   end
 

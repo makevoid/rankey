@@ -16,6 +16,19 @@ class Array
   def permkeys(num)
     self.permutation(num).to_a.map{ |e| SortedSet.new e }.uniq#.map{ |s| s.to_a.join(" ") }
   end
+
+  def allperms_sorted(range, reference)
+    range.to_a.map do |num|
+      self.permkeys_sorted(num, reference)
+    end.flatten
+  end
+
+  def permkeys_sorted(num, ref)
+    self.permutation(num).to_a.map do |e|
+      e.sort!{ |a, b| ref.index(a) <=> ref.index(b) }
+      Set.new e
+    end.uniq#.map{ |s| s.to_a.join(" ") }
+  end
 end
 
 class Keys
@@ -58,14 +71,14 @@ class Keys
     sliceds = []
     lv_one.each do |elem|
       slice = lv_zero + [elem]
-      sliceds += slice.sort_by{|e| e[:idx]}.map{ |e| e[:key] }.allperms(2..slice.size)
+      sliceds += slice.sort_by{|e| e[:idx]}.map{ |e| e[:key] }.allperms_sorted(2..slice.size, keys)
     end
 
     # internals
     lv_one.each do |elem|
       slice = lv_one.select{|e| e[:idx] != elem[:idx] }# + [elem]
       arr = slice.map do |el|
-        [el, elem].sort_by{|e| e[:idx]}.map{ |e| e[:key] }.allperms(2..2)
+        [el, elem].sort_by{|e| e[:idx]}.map{ |e| e[:key] }.allperms_sorted(2..2, keys)
       end
       sliceds += arr.map{ |e| e[0] }
     end
