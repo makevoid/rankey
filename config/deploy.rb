@@ -46,7 +46,7 @@ role :db,  domain, :primary => true
 after :deploy, "deploy:create_symlinks"
 after :deploy, "deploy:create_database_yml"
 # after :deploy, "deploy:create_mailer_init"
-# after :deploy, "deploy:newrelic_secret"
+after :deploy, "deploy:newrelic_secret"
 
 after :deploy, "deploy:cleanup"
 after :deploy, "chmod:entire"
@@ -75,7 +75,7 @@ namespace :deploy do
 
   desc "Setup newrelic license key"
   task :newrelic_secret do
-    newrelic_key = File.read('/Users/makevoid/Dropbox/.newrelic').strip
+    newrelic_key = File.read(File.expand_path '~/Dropbox/.newrelic').strip
     run "ruby -e \"path = '#{current_path}/config'; db_yaml = File.read(path+'/newrelic.yml'); File.open(path+'/newrelic.yml', 'w'){ |f| f.write db_yaml.gsub(/LICENSE_KEY/, '#{newrelic_key}') }\""
   end
 
